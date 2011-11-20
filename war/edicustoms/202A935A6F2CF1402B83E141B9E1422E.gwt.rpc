@@ -1,0 +1,89 @@
+com.gavin.ediCustoms.client.service.DictionaryService, false, false, false, false, _, 1918469377
+com.gavin.ediCustoms.entity.dictionary.Attachment, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.Attachment/2636508198, 2636508198
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.Attachment,id,code,name
+[Lcom.gavin.ediCustoms.entity.dictionary.Attachment;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.Attachment;/807402063, 807402063
+com.gavin.ediCustoms.entity.dictionary.Bracket, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.Bracket/763291548, 763291548
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.Bracket,id,code,manufacturer,modelNo,specification,weight
+[Lcom.gavin.ediCustoms.entity.dictionary.Bracket;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.Bracket;/3044695265, 3044695265
+com.gavin.ediCustoms.entity.dictionary.BringInMode, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.BringInMode/3755674497, 3755674497
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.BringInMode,id,code,name
+[Lcom.gavin.ediCustoms.entity.dictionary.BringInMode;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.BringInMode;/2400557263, 2400557263
+com.gavin.ediCustoms.entity.dictionary.ContainerSize, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.ContainerSize/3810853623, 3810853623
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.ContainerSize,id,code,size,valentNum
+[Lcom.gavin.ediCustoms.entity.dictionary.ContainerSize;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.ContainerSize;/3047750617, 3047750617
+com.gavin.ediCustoms.entity.dictionary.Country, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.Country/1737347174, 1737347174
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.Country,id,code,name,englishName
+[Lcom.gavin.ediCustoms.entity.dictionary.Country;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.Country;/2598865911, 2598865911
+com.gavin.ediCustoms.entity.dictionary.Currency, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.Currency/3823657865, 3823657865
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.Currency,id,code,name,shortName
+[Lcom.gavin.ediCustoms.entity.dictionary.Currency;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.Currency;/3494762144, 3494762144
+com.gavin.ediCustoms.entity.dictionary.Customs, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.Customs/2748817094, 2748817094
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.Customs,id,code,name
+[Lcom.gavin.ediCustoms.entity.dictionary.Customs;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.Customs;/1685958886, 1685958886
+com.gavin.ediCustoms.entity.dictionary.DealMode, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.DealMode/3836130372, 3836130372
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.DealMode,id,code,name
+[Lcom.gavin.ediCustoms.entity.dictionary.DealMode;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.DealMode;/1764412756, 1764412756
+com.gavin.ediCustoms.entity.dictionary.DeclareProperty, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.DeclareProperty/3147156814, 3147156814
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.DeclareProperty,id,code,name
+[Lcom.gavin.ediCustoms.entity.dictionary.DeclareProperty;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.DeclareProperty;/3869267905, 3869267905
+com.gavin.ediCustoms.entity.dictionary.District, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.District/2590683693, 2590683693
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.District,id,code,name,type
+[Lcom.gavin.ediCustoms.entity.dictionary.District;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.District;/4040775075, 4040775075
+com.gavin.ediCustoms.entity.dictionary.GoodClassification, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.GoodClassification/3738742813, 3738742813
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.GoodClassification,id,code,name,plusCode,unit1,unit2,lowRate,highRate,outRate,regMark,regRate,taxType,taxRate,commRate,taiwanRate,otherType,otherRate,iLowPrice,iHighPrice,eLowPrice,eHighPrice,maxIn,maxOut,controlMark,chkPrice,tariffMark,note
+[Lcom.gavin.ediCustoms.entity.dictionary.GoodClassification;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.GoodClassification;/702611641, 702611641
+com.gavin.ediCustoms.entity.dictionary.InvestMode, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.InvestMode/322046944, 322046944
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.InvestMode,id,code,name
+[Lcom.gavin.ediCustoms.entity.dictionary.InvestMode;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.InvestMode;/3183643107, 3183643107
+com.gavin.ediCustoms.entity.dictionary.IronChest, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.IronChest/4253313040, 4253313040
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.IronChest,id,code,size,description,weight
+[Lcom.gavin.ediCustoms.entity.dictionary.IronChest;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.IronChest;/1926708051, 1926708051
+com.gavin.ediCustoms.entity.dictionary.LoadPort, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.LoadPort/4061710998, 4061710998
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.LoadPort,id,code,name,customsCode
+[Lcom.gavin.ediCustoms.entity.dictionary.LoadPort;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.LoadPort;/4063680282, 4063680282
+com.gavin.ediCustoms.entity.dictionary.PayWay, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.PayWay/3287599927, 3287599927
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.PayWay,id,code,name
+[Lcom.gavin.ediCustoms.entity.dictionary.PayWay;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.PayWay;/2288275174, 2288275174
+com.gavin.ediCustoms.entity.dictionary.Port, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.Port/2525942766, 2525942766
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.Port,id,code,name
+[Lcom.gavin.ediCustoms.entity.dictionary.Port;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.Port;/252851012, 252851012
+com.gavin.ediCustoms.entity.dictionary.ProcessType, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.ProcessType/3884229209, 3884229209
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.ProcessType,id,code,name
+[Lcom.gavin.ediCustoms.entity.dictionary.ProcessType;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.ProcessType;/2583404577, 2583404577
+com.gavin.ediCustoms.entity.dictionary.TaxKind, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.TaxKind/4120484045, 4120484045
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.TaxKind,id,code,name,shortName
+[Lcom.gavin.ediCustoms.entity.dictionary.TaxKind;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.TaxKind;/2902127459, 2902127459
+com.gavin.ediCustoms.entity.dictionary.TaxMode, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.TaxMode/2736263780, 2736263780
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.TaxMode,id,code,name
+[Lcom.gavin.ediCustoms.entity.dictionary.TaxMode;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.TaxMode;/698716084, 698716084
+com.gavin.ediCustoms.entity.dictionary.TradeMode, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.TradeMode/1741069715, 1741069715
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.TradeMode,id,code,name,shortName
+[Lcom.gavin.ediCustoms.entity.dictionary.TradeMode;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.TradeMode;/1584279969, 1584279969
+com.gavin.ediCustoms.entity.dictionary.TransportMode, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.TransportMode/3612224830, 3612224830
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.TransportMode,id,code,name
+[Lcom.gavin.ediCustoms.entity.dictionary.TransportMode;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.TransportMode;/1895142218, 1895142218
+com.gavin.ediCustoms.entity.dictionary.Truck, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.Truck/550658507, 550658507
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.Truck,id,code,icCard,truckNo,hkTruckNo,corporationName,organizationCode,organizationAddress,organizationTelephone,driverName
+[Lcom.gavin.ediCustoms.entity.dictionary.Truck;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.Truck;/3411636800, 3411636800
+com.gavin.ediCustoms.entity.dictionary.Unit, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.Unit/3492562768, 3492562768
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.Unit,id,code,name,convertCode,convertRate
+[Lcom.gavin.ediCustoms.entity.dictionary.Unit;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.Unit;/437629254, 437629254
+com.gavin.ediCustoms.entity.dictionary.Useage, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.Useage/4070958051, 4070958051
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.Useage,id,code,name
+[Lcom.gavin.ediCustoms.entity.dictionary.Useage;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.Useage;/398447210, 398447210
+com.gavin.ediCustoms.entity.dictionary.WrapType, true, true, true, true, com.gavin.ediCustoms.entity.dictionary.WrapType/3694936811, 3694936811
+@ClientFields,com.gavin.ediCustoms.entity.dictionary.WrapType,id,code,name,unit
+[Lcom.gavin.ediCustoms.entity.dictionary.WrapType;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.dictionary.WrapType;/1703620261, 1703620261
+com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException, true, true, true, true, com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException/3936916533, 3936916533
+java.lang.Exception, true, false, true, false, java.lang.Exception/1920171873, 1920171873
+java.lang.Long, true, true, true, true, java.lang.Long/4227064769, 4227064769
+[Ljava.lang.Long;, false, false, true, true, [Ljava.lang.Long;/97727328, 97727328
+java.lang.Number, true, false, true, false, java.lang.Number/300033342, 300033342
+java.lang.RuntimeException, true, false, true, false, java.lang.RuntimeException/515124647, 515124647
+java.lang.String, true, true, true, true, java.lang.String/2004016611, 2004016611
+java.lang.Throwable, true, false, true, false, java.lang.Throwable/2953622131, 2953622131
+java.util.ArrayList, true, true, true, true, java.util.ArrayList/3821976829, 3821976829
+java.util.Arrays$ArrayList, true, true, true, true, java.util.Arrays$ArrayList/1243019747, 1243019747
+java.util.LinkedList, true, true, true, true, java.util.LinkedList/1060625595, 1060625595
+java.util.Stack, true, true, true, true, java.util.Stack/1031431137, 1031431137
+java.util.Vector, true, true, true, true, java.util.Vector/3125574444, 3125574444

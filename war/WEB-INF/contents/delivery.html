@@ -1,0 +1,134 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>收货单位打印</title>
+<link type="text/css" href="/delivery.css" rel="stylesheet">
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		window.onafterprint=function(){$('#toolbar').show();}
+	});
+	function preview(isPreview) {
+		if (isPreview) {
+			$("div").css("border-color", "#000000");
+			$("div").css("color", "#000000");
+		} else {
+			$("#frame div").css("border-color", "#ffffff");
+			$("div").css("color", "#ffffff");
+			$(".content").css("color", "#000000");
+			$("#toorbar").css("color", "#000000");
+		}
+	}
+</script>
+
+</head>
+<body>
+<div id="toolbar">
+<button type="button"
+	onclick="javascript:$('#toolbar').hide();preview(true);window.print();">打印</button>
+</div>
+<div id="frame">
+<#list deliveryBills as deliveryBill>	
+
+<div style="width: 100%; height: 30px;"></div>
+
+<div id="title" style="font-size: 14px;">泽盛（B型）一天游/进口报关通知单</div>
+<br/>
+
+<div class="tr">
+<div class="td" style="width:180px;">申报日期：${(customsDeclarationHead.declareTime?string("yyyy年MM月dd日"))!""}</div>
+<div class="td" style="width:152px;">车牌：${customsDeclarationHead.billNo!""}</div>
+<div class="td" style="width:307px;">发货单位：${enterprise.registeName!""}</div>
+<div class="td" style="width:390px;">出口单录入号：${customsDeclarationHead.preEntryId!""}</div>
+</div>
+<div class="table">
+<div class="tr" style="border-bottom: none"></div>
+<div class="tr">
+<div class="td" style="width:480px;border-right: none; text-align: left;">收货单位：${(deliveryBill.destinationEnterprise.registeName)!""}</div>
+<div class="td" style="width:273px;border-right: none;text-align: left;">手册编号：${manualNo!""}</div>
+<div class="td" style="width:278px;border-right: none;text-align: left;">合同号：${customsDeclarationHead.contractNo!""}</div>
+</div>
+<div class="tr header">
+<div class="td header" style="line-height: 28px;width: 62px;width: 63px\9;">
+<div class="tr" style="height:28px; border-bottom: none">进口</div>
+<div class="tr" style="height:28px;border-bottom: none">材料序号</div>
+</div>
+<div class="td header" style="width: 87px;width: 88px\9;">商品编码</div>
+<div class="td header" style="width: 409px;width: 410px\9;">商品名称、规格型号(报关规范要求)</div>
+<div class="td header" style="width: 85px;width: 86px\9;">数量/单位</div>
+<div class="td header" style="line-height: 28px;width: 128px;width: 129px\9;">
+<div class="tr" style="height:28px;">币制：${(deliveryBill.list[0].customsDeclarationGood.currency)!""}</div>
+<div class="tr" style="height:28px;border-bottom: none">
+<div class="td" style="line-height: 28px;width:63px;width:63px\9;">单价</div>
+<div class="td last-td" style="line-height: 28px;width:64px;width:64px\9;">总价</div>
+</div>
+</div>
+<div class="td header" style="width: 73px;width: 74px\9;">件数 /包装</div>
+<div class="td header" style="width: 59px;width: 60px\9;">毛重</div>
+<div class="td header" style="width: 59px;width: 60px\9;">净重</div>
+<div class="td header last-td" style="width: 59px;width: 60px\9;">体积</div>
+</div>
+
+<#if (deliveryBill.list?size>10)> 
+<#assign listlen=10> 
+<#else>
+<#assign listlen=deliveryBill.list?size> 
+</#if>
+
+<#list deliveryBill.list[0..listlen-1] as goodItem>
+<div class="tr">
+<div class="td" style="width: 27px;width: 28px\9;">${goodItem_index+1}</div>
+<div class="td" style="width: 34px;width: 35px\9;">${(goodItem.customsDeclarationGood.no)!""}</div>
+<div class="td" style="width: 87px;width: 88px\9;">${(goodItem.customsDeclarationGood.codeTS)!""}</div>
+<div class="td" style="width: 409px;width: 410px\9;">${(goodItem.customsDeclarationGood.name)!""}</div>
+<div class="td" style="width: 85px;width: 86px\9;">${(goodItem.deliveryRecord.quantity)!""}${(goodItem.customsDeclarationGood.declareUnit)!""}</div>
+<div class="td" style="width: 63px;width: 63px\9;">#{(goodItem.customsDeclarationGood.declarePrice)!"";m2M2}</div>
+<div class="td" style="width: 64px;width: 66px\9;">#{(goodItem.customsDeclarationGood.declarePrice*goodItem.deliveryRecord.quantity)!"";m2M2}</div>
+<div class="td" style="width: 73px;width: 74px\9;">${(goodItem.deliveryRecord.packNo)!""}</div>
+<div class="td" style="width: 59px;width: 60px\9;">${(goodItem.deliveryRecord.grossWeight)!""}</div>
+<div class="td" style="width: 59px;width: 60px\9;">${(goodItem.deliveryRecord.netWeight)!""}</div>
+<div class="td last-td" style="width: 59px;width: 60px\9;">${(goodItem.deliveryRecord.volume)!""}</div>
+</div>
+</#list>
+
+<#if (listlen<10)> 
+<#list 1..10-listlen as a>
+<div class="tr">
+<div class="td" style="width: 27px;width: 28px\9;">${a_index+listlen+1}</div>
+<div class="td" style="width: 34px;width: 35px\9;"></div>
+<div class="td" style="width: 87px;width: 88px\9;"></div>
+<div class="td" style="width: 409px;width: 410px\9;"></div>
+<div class="td" style="width: 85px;width: 86px\9;"></div>
+<div class="td" style="width: 63px;width: 63px\9;"></div>
+<div class="td" style="width: 64px;width: 66px\9;"></div>
+<div class="td" style="width: 73px;width: 74px\9;"></div>
+<div class="td" style="width: 59px;width: 60px\9;"></div>
+<div class="td" style="width: 59px;width: 60px\9;"></div>
+<div class="td last-td" style="width: 59px;width: 60px\9;"></div>
+</div>
+</#list>
+</#if>
+
+</div>
+
+<div class="tr">
+<div class="td" style="width:150px"></div>
+<div class="td" style="width:418px">收货单位报关确认：</div>
+<div class="td" style="width:460px">日期：</div>
+</div>
+
+<#if  deliveryBills?size!=deliveryBill_index+1 >
+<div style="page-break-before: always;">
+   <!--[if IE 7]><br style="height:0; line-height:0"><![endif]-->
+</div>
+</#if>
+
+
+</#list>
+
+
+
+<div style="width: 100%; height: 20px;"></div>
+</div>
+</body>
+</html>

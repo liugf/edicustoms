@@ -1,0 +1,87 @@
+body {
+	margin:0;	
+	font-size: 12px;
+	background-color: #fff;
+	text-align: center;
+}
+
+h1 {
+	font-size: 14px;
+}
+
+.PageNext{page-break-after: always;}
+
+#frame {
+	margin: 0 auto;
+	width: 1038px;
+	text-align: left;
+}
+
+#title {
+	padding-top: 10px;
+	text-align: center;
+	height: 20px;
+}
+
+.clear {
+	clear: both;
+}
+
+#toolbar{
+	width£º100%;
+	height: 40px;
+	padding-top:10px;
+	text-align:center;
+	background-color: #a19b9b;
+	border-bottom: 1px solid #737070;
+}
+
+.table {
+	border: 1px solid;
+	border-bottom: none;
+}
+
+.tr {
+	float: none;
+	height: 40px;
+	width: 100%;
+	height: 40px;
+}
+
+.td {
+	float: left;
+	height: 40px;
+	line-height: 40px;
+}
+
+.table .tr {
+	height: 40px;
+	border-bottom: 1px solid;
+}
+
+.table .td {
+	border-right: 1px solid;
+	line-height: 40px;
+	height: 40px;
+	text-align: center;
+}
+
+.table .last-tr {
+	border-bottom: none;
+}
+
+.table .last-td {
+	border-right: none;
+}
+
+.table .header {
+	height: 58px;
+	line-height: 58px;
+	overflow: hidden;
+}
+
+.table .footer {
+	height: 40px;
+	line-height: 40px;
+	overflow: hidden;
+}

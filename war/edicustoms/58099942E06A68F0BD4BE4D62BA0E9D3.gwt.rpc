@@ -1,0 +1,50 @@
+com.gavin.ediCustoms.client.service.SystemService, false, false, false, false, _, 2899792879
+com.gavin.ediCustoms.entity.edi.AccountRecord, true, true, false, false, com.gavin.ediCustoms.entity.edi.AccountRecord/2015053700, 2015053700
+@ClientFields,com.gavin.ediCustoms.entity.edi.AccountRecord,id,enterpriseId,administratorId,userId,moneyBefore,moneyAfter,increase,note,created
+[Lcom.gavin.ediCustoms.entity.edi.AccountRecord;, true, true, false, false, [Lcom.gavin.ediCustoms.entity.edi.AccountRecord;/830648393, 830648393
+com.gavin.ediCustoms.entity.edi.Enterprise, true, true, true, true, com.gavin.ediCustoms.entity.edi.Enterprise/4190506604, 4190506604
+@ClientFields,com.gavin.ediCustoms.entity.edi.Enterprise,id,tradeCode,registeName,customsCode,operator,operateTime,ownerCode,isDeclare,address,contact,legalPersonCode,telephone,fax,ediCode,bank,bankAccount,runningNum,jichengtongId,quyujiedian,userPrivateKey,bpNo,icCardNo,certificateNo,ftpUsername,ftpPassword,money,proxyCostPerDeal,serviceCostPerDeal
+[Lcom.gavin.ediCustoms.entity.edi.Enterprise;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.edi.Enterprise;/467014398, 467014398
+com.gavin.ediCustoms.entity.edi.ForeignEnterprise, true, true, true, true, com.gavin.ediCustoms.entity.edi.ForeignEnterprise/2769548323, 2769548323
+@ClientFields,com.gavin.ediCustoms.entity.edi.ForeignEnterprise,id,tradeCode,registeName,address,manager,telephone,fax
+[Lcom.gavin.ediCustoms.entity.edi.ForeignEnterprise;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.edi.ForeignEnterprise;/3382841679, 3382841679
+com.gavin.ediCustoms.entity.edi.Permission, true, true, true, true, com.gavin.ediCustoms.entity.edi.Permission/2953363099, 2953363099
+@ClientFields,com.gavin.ediCustoms.entity.edi.Permission,id,userId,enterpriseId,canAdd,canUpdate,canDelete,canPass,canDisPass
+[Lcom.gavin.ediCustoms.entity.edi.Permission;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.edi.Permission;/2694205024, 2694205024
+com.gavin.ediCustoms.entity.edi.PermitedEnterprise, true, true, false, false, com.gavin.ediCustoms.entity.edi.PermitedEnterprise/1622255496, 1622255496
+[Lcom.gavin.ediCustoms.entity.edi.PermitedEnterprise;, true, true, false, false, [Lcom.gavin.ediCustoms.entity.edi.PermitedEnterprise;/30754191, 30754191
+com.gavin.ediCustoms.entity.edi.RunRelation, false, false, true, true, com.gavin.ediCustoms.entity.edi.RunRelation/2359853469, 2359853469
+@ClientFields,com.gavin.ediCustoms.entity.edi.RunRelation,id,runEnterpriseId,manufactureEnterpriseId
+[Lcom.gavin.ediCustoms.entity.edi.RunRelation;, false, false, true, true, [Lcom.gavin.ediCustoms.entity.edi.RunRelation;/3778077941, 3778077941
+com.gavin.ediCustoms.entity.edi.SendRelation, false, false, true, true, com.gavin.ediCustoms.entity.edi.SendRelation/511218526, 511218526
+@ClientFields,com.gavin.ediCustoms.entity.edi.SendRelation,id,sendEnterpriseId,receiveEnterpriseId
+[Lcom.gavin.ediCustoms.entity.edi.SendRelation;, false, false, true, true, [Lcom.gavin.ediCustoms.entity.edi.SendRelation;/3456637347, 3456637347
+com.gavin.ediCustoms.entity.edi.User, true, true, true, true, com.gavin.ediCustoms.entity.edi.User/2833935988, 2833935988
+@ClientFields,com.gavin.ediCustoms.entity.edi.User,id,userName,password,email,name,phone
+[Lcom.gavin.ediCustoms.entity.edi.User;, true, true, false, false, [Lcom.gavin.ediCustoms.entity.edi.User;/587046899, 587046899
+com.gavin.ediCustoms.entity.edi.admin.Administrator, true, true, true, true, com.gavin.ediCustoms.entity.edi.admin.Administrator/2718166217, 2718166217
+@ClientFields,com.gavin.ediCustoms.entity.edi.admin.Administrator,id,adminName,password
+com.gavin.ediCustoms.entity.edi.admin.CompanyMessage, true, true, true, true, com.gavin.ediCustoms.entity.edi.admin.CompanyMessage/1092215094, 1092215094
+@ClientFields,com.gavin.ediCustoms.entity.edi.admin.CompanyMessage,id,companyName,address,telephone,fax,zip,email,ediPlatformCode
+com.gavin.ediCustoms.shared.UserState, true, true, false, false, com.gavin.ediCustoms.shared.UserState/1157623870, 1157623870
+com.gavin.ediCustoms.shared.UserState$UserType, true, true, false, false, com.gavin.ediCustoms.shared.UserState$UserType/4194475549, 4194475549
+com.google.gwt.i18n.client.impl.DateRecord, true, true, true, true, com.google.gwt.i18n.client.impl.DateRecord/112389920, 112389920
+com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException, true, true, true, true, com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException/3936916533, 3936916533
+java.lang.Boolean, true, true, true, true, java.lang.Boolean/476441737, 476441737
+java.lang.Double, true, true, false, false, java.lang.Double/858496421, 858496421
+java.lang.Exception, true, false, true, false, java.lang.Exception/1920171873, 1920171873
+java.lang.Long, true, true, true, true, java.lang.Long/4227064769, 4227064769
+[Ljava.lang.Long;, false, false, true, true, [Ljava.lang.Long;/97727328, 97727328
+java.lang.Number, true, false, true, false, java.lang.Number/300033342, 300033342
+java.lang.RuntimeException, true, false, true, false, java.lang.RuntimeException/515124647, 515124647
+java.lang.String, true, true, true, true, java.lang.String/2004016611, 2004016611
+java.lang.Throwable, true, false, true, false, java.lang.Throwable/2953622131, 2953622131
+java.sql.Date, true, true, true, true, java.sql.Date/3996530531, 3996530531
+java.sql.Time, true, true, true, true, java.sql.Time/831929183, 831929183
+java.sql.Timestamp, true, true, true, true, java.sql.Timestamp/1769758459, 1769758459
+java.util.ArrayList, true, true, true, true, java.util.ArrayList/3821976829, 3821976829
+java.util.Arrays$ArrayList, true, true, true, true, java.util.Arrays$ArrayList/1243019747, 1243019747
+java.util.Date, true, true, true, true, java.util.Date/1659716317, 1659716317
+java.util.LinkedList, true, true, true, true, java.util.LinkedList/1060625595, 1060625595
+java.util.Stack, true, true, true, true, java.util.Stack/1031431137, 1031431137
+java.util.Vector, true, true, true, true, java.util.Vector/3125574444, 3125574444

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>账户明细</title>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		window.onafterprint=function(){$('#toolbar').show();}
+	});
+</script>
+<style type="text/css">
+body{
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+#toolbar{
+	width: 100%;
+	height: 40px;
+	padding-top:10px;
+	text-align:center;
+	background-color: #a19b9b;
+	border-bottom: 1px solid #737070;
+}
+.frame{
+	margin: 0 auto;
+	width:800px;
+}
+table{
+	width:100%;
+	font-size: 12px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<div id="toolbar" >
+		<button type="button" onclick="javascript:$('#toolbar').hide();window.print();">打印</button>
+	</div>
+	<div class="frame">
+		<div>企业名称：${enterprise.registeName!""} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 ${(start?string("yyyy-MM-dd"))!""}到${(end?string("yyyy-MM-dd"))!""}</div>
+		<table border="1" cellpadding="0" cellspacing="0" >
+			<thead>
+				<tr>
+					<th width="20%">变动金额</th>
+					<th width="20%">余额</th>
+					<th width="25%">操作时间</th>
+					<th width="35%">备注</th>
+				</tr>
+			</thead>
+			<tbody>
+				<#list accountRecords as accountRecord>
+				<tr>
+					<td>${accountRecord.increase!""}</td>
+					<td>${accountRecord.moneyAfter!""}</td>
+					<td>${accountRecord.created!""}</td>
+					<td>${accountRecord.note!""}</td>
+				</tr>
+				</#list>
+			</tbody>
+		</table>	
+	</div>
+</body>
+</html>
+

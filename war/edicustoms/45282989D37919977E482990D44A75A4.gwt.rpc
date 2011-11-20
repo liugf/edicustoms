@@ -1,0 +1,62 @@
+com.extjs.gxt.ui.client.core.FastMap, true, true, false, false, com.extjs.gxt.ui.client.core.FastMap/3488076414, 3488076414
+com.gavin.ediCustoms.client.service.BusinessService, false, false, false, false, _, 3241673366
+com.gavin.ediCustoms.entity.ForeignEnterprise, true, true, false, false, com.gavin.ediCustoms.entity.ForeignEnterprise/4292279355, 4292279355
+@ClientFields,com.gavin.ediCustoms.entity.ForeignEnterprise,id,tradeCode,registeName,address,manager,telephone,fax
+com.gavin.ediCustoms.entity.Voucher, true, true, true, true, com.gavin.ediCustoms.entity.Voucher/51664053, 51664053
+@ClientFields,com.gavin.ediCustoms.entity.Voucher,id,goodClassificationId,ownerId,no,code,plusCode,name,goodModel,declareUnit,unit1,unit2,declarePrice,currency,originCountry
+[Lcom.gavin.ediCustoms.entity.Voucher;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.Voucher;/1018823623, 1018823623
+com.gavin.ediCustoms.entity.contract.ContractConsume, true, true, true, true, com.gavin.ediCustoms.entity.contract.ContractConsume/657579740, 657579740
+@ClientFields,com.gavin.ediCustoms.entity.contract.ContractConsume,id,contractProductId,contractMaterialId,used,wasted
+[Lcom.gavin.ediCustoms.entity.contract.ContractConsume;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.contract.ContractConsume;/2157804809, 2157804809
+com.gavin.ediCustoms.entity.contract.ContractHead, true, true, true, true, com.gavin.ediCustoms.entity.contract.ContractHead/263698154, 263698154
+@ClientFields,com.gavin.ediCustoms.entity.contract.ContractHead,id,ownerId,foreignEnterpriseId,runEnterpriseId,preManualNo,manualNo,tradeMode,taxKind,processType,certificationCode,protocolCode,licenceCode,tradeCountry,importDeadline,exportDeadline,importContract,exportContract,importTotalMoney,exportTotalMoney,importCurrency,exportCurrency,investMode,investMoney,investCurrency,saleInScale,superviseFeeRate,superviseFee,dealMode,bringInMode,exportDelay,port1,port2,port3,port4,port5,note,typeMan,typeDate
+[Lcom.gavin.ediCustoms.entity.contract.ContractHead;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.contract.ContractHead;/3004712977, 3004712977
+com.gavin.ediCustoms.entity.contract.ContractMaterial, true, true, true, true, com.gavin.ediCustoms.entity.contract.ContractMaterial/2310289076, 2310289076
+@ClientFields,com.gavin.ediCustoms.entity.contract.ContractMaterial,id,GoodClassificationId,no,contractHeadId,code,plusCode,name,goodModel,quantity,price,declareUnit,originCountry,taxMode,bringInMode,totalPrice,taxScale,unit1,unit2
+[Lcom.gavin.ediCustoms.entity.contract.ContractMaterial;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.contract.ContractMaterial;/1685020805, 1685020805
+com.gavin.ediCustoms.entity.contract.ContractProduct, true, true, true, true, com.gavin.ediCustoms.entity.contract.ContractProduct/993929246, 993929246
+@ClientFields,com.gavin.ediCustoms.entity.contract.ContractProduct,id,goodClassificationId,no,contractHeadId,code,plusCode,name,goodModel,quantity,price,declareUnit,originCountry,taxMode,totalPrice,taxScale,processFee,unit1,unit2
+[Lcom.gavin.ediCustoms.entity.contract.ContractProduct;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.contract.ContractProduct;/2171502417, 2171502417
+com.gavin.ediCustoms.entity.core.Container, true, true, true, true, com.gavin.ediCustoms.entity.core.Container/1506134989, 1506134989
+@ClientFields,com.gavin.ediCustoms.entity.core.Container,id,customsDeclarationHeadId,containerNo,size,type,bracket,valentNum
+[Lcom.gavin.ediCustoms.entity.core.Container;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.core.Container;/2713792880, 2713792880
+com.gavin.ediCustoms.entity.core.CustomsDeclarationGood, true, true, true, true, com.gavin.ediCustoms.entity.core.CustomsDeclarationGood/1484859294, 1484859294
+@ClientFields,com.gavin.ediCustoms.entity.core.CustomsDeclarationGood,id,contractGoodId,customsDeclarationHeadId,no,noInContract,codeTS,code,plusCode,classMark,name,originCountry,contractItemNo,quantity,declareUnit,factor,converter,unit1,quantity1,unit2,quantity2,currency,declarePrice,totalPrice,taxMode,useTo,brandAndModel,volume,grossWeight,netWeight,packNo,shenbaoguifan,wrapType,goodVersion
+[Lcom.gavin.ediCustoms.entity.core.CustomsDeclarationGood;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.core.CustomsDeclarationGood;/3317081367, 3317081367
+com.gavin.ediCustoms.entity.core.CustomsDeclarationHead, true, true, true, true, com.gavin.ediCustoms.entity.core.CustomsDeclarationHead/1007174731, 1007174731
+@ClientFields,com.gavin.ediCustoms.entity.core.CustomsDeclarationHead,id,ownerId,isDeclared,isExport,isPass,preEntryId,entryId,electronicPort,ePortNo,loadPort,useage,transportMode,iePort,destinationPort,transportTool,runEnterpriseId,ownerDistrict,declareEnterpriseId,contractNo,saleInRatio,billNo,tradeCountry,tradeMode,taxKind,payMode,dealMode,exchangeSource,payWay,feeMark,otherMark,insurMark,feeCurrency,feeRate,otherCurrency,otherRate,insurCurrency,insurRate,packNo,grossWeight,netWeight,licenseNo,certificationCode,contractHeadId,ieDate,declarantId,declarant,wrapType,certMark,note,itemsNo,declareTime,operator,giveTax,baoShuiCangHao,corporationName,organizationCode,meansOfTransportCode,meansOfTransportName,meansOfTransportId,billOfLadingNo,localMeansOfTransportMode,localMeansOfTransportCode,localMeansOfTransportName,localMeansOfTransportId,iccardNo,importExportDate,declareProperty,truckCode,proxyCost,serviceCost
+[Lcom.gavin.ediCustoms.entity.core.CustomsDeclarationHead;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.core.CustomsDeclarationHead;/1045526807, 1045526807
+com.gavin.ediCustoms.entity.core.DeliveryRecord, true, true, true, true, com.gavin.ediCustoms.entity.core.DeliveryRecord/629827659, 629827659
+@ClientFields,com.gavin.ediCustoms.entity.core.DeliveryRecord,id,customsDeclarationHeadId,destinationEnterpriseId,customsDeclarationGoodId,quantity,volume,grossWeight,netWeight,packNo
+[Lcom.gavin.ediCustoms.entity.core.DeliveryRecord;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.core.DeliveryRecord;/1391303870, 1391303870
+com.gavin.ediCustoms.entity.core.PackingItem, true, true, true, true, com.gavin.ediCustoms.entity.core.PackingItem/2447165604, 2447165604
+@ClientFields,com.gavin.ediCustoms.entity.core.PackingItem,id,customsDeclarationHeadId,no,wrapNo,packNo,name,clientNo,quantity,declareUnit,grossWeightPerPack,netWeightPerPack,grossWeight,netWeight
+[Lcom.gavin.ediCustoms.entity.core.PackingItem;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.core.PackingItem;/2669202683, 2669202683
+com.gavin.ediCustoms.entity.core.TotalBillHead, true, true, true, true, com.gavin.ediCustoms.entity.core.TotalBillHead/2478482714, 2478482714
+@ClientFields,com.gavin.ediCustoms.entity.core.TotalBillHead,id,ownerId,isExport,billNo,areaType,ioFlag,ioType,customsCode,oppositeEnterpriseId,emsNo,linkBillType,linkBillNo,runEnterpriseId,packNo,wrapType,grossWeight,netWeight,contractHeadId,tradeMode,iePort,declareTime,ieDate,transportMode,transportTool,entryBillNo,taxKind,licenseNo,dealMode,feeRate,insurRate,otherRate,contractNo,containerNo,note,status,operator,operateTime,certificationCode,destinationPort,tradeCountry,linkType
+[Lcom.gavin.ediCustoms.entity.core.TotalBillHead;, true, true, true, true, [Lcom.gavin.ediCustoms.entity.core.TotalBillHead;/3540616431, 3540616431
+com.google.gwt.i18n.client.impl.DateRecord, true, true, true, true, com.google.gwt.i18n.client.impl.DateRecord/112389920, 112389920
+com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException, true, true, true, true, com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException/3936916533, 3936916533
+java.lang.Boolean, true, true, true, true, java.lang.Boolean/476441737, 476441737
+java.lang.Double, true, true, true, true, java.lang.Double/858496421, 858496421
+java.lang.Exception, true, false, true, false, java.lang.Exception/1920171873, 1920171873
+java.lang.Integer, true, true, true, true, java.lang.Integer/3438268394, 3438268394
+java.lang.Long, true, true, true, true, java.lang.Long/4227064769, 4227064769
+[Ljava.lang.Long;, false, false, true, true, [Ljava.lang.Long;/97727328, 97727328
+java.lang.Number, true, false, true, false, java.lang.Number/300033342, 300033342
+java.lang.RuntimeException, true, false, true, false, java.lang.RuntimeException/515124647, 515124647
+java.lang.String, true, true, true, true, java.lang.String/2004016611, 2004016611
+java.lang.Throwable, true, false, true, false, java.lang.Throwable/2953622131, 2953622131
+java.sql.Date, true, true, true, true, java.sql.Date/3996530531, 3996530531
+java.sql.Time, true, true, true, true, java.sql.Time/831929183, 831929183
+java.sql.Timestamp, true, true, true, true, java.sql.Timestamp/1769758459, 1769758459
+java.util.ArrayList, true, true, true, true, java.util.ArrayList/3821976829, 3821976829
+java.util.Arrays$ArrayList, true, true, true, true, java.util.Arrays$ArrayList/1243019747, 1243019747
+java.util.Date, true, true, true, true, java.util.Date/1659716317, 1659716317
+java.util.HashMap, true, true, false, false, java.util.HashMap/962170901, 962170901
+java.util.IdentityHashMap, true, true, false, false, java.util.IdentityHashMap/3881143367, 3881143367
+java.util.LinkedHashMap, true, true, false, false, java.util.LinkedHashMap/1551059846, 1551059846
+java.util.LinkedList, true, true, true, true, java.util.LinkedList/1060625595, 1060625595
+java.util.Stack, true, true, true, true, java.util.Stack/1031431137, 1031431137
+java.util.TreeMap, true, true, false, false, java.util.TreeMap/1575826026, 1575826026
+java.util.Vector, true, true, true, true, java.util.Vector/3125574444, 3125574444

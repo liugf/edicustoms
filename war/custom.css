@@ -1,0 +1,126 @@
+body {
+	margin:0;
+	font-family: "KaiTi_GB2312";
+	font-size: 12px;
+	background-color: #fff;
+	text-align: center;
+}
+
+h1 {
+	font-family: "SimHei", \9ed1\4f53, arial, sans-serif;
+	font-size: 20px;
+	font-weight: normal;
+}
+
+.clear {
+	clear: both;
+}
+
+#toolbar{
+	width£º100%;
+	height: 40px;
+	padding-top:10px;
+	text-align:center;
+	background-color: #a19b9b;
+	border-bottom: 1px solid #737070;
+}
+
+#frame {
+	margin: 0 auto;
+	width: 702px;
+	text-align: left;
+}
+
+#title {
+	padding-top: 10px;
+	text-align: center;
+	height: 60px;
+}
+
+#top {
+	width: 100%;
+	height: 20px;
+}
+
+#top-left {
+	margin-left: 90px;
+	float: left;
+	width: 290px;
+}
+
+#top-right {
+	float: right;
+	width: 320px;
+}
+
+.table {
+	border: 1px solid;
+}
+
+.tr {
+	float: none;
+	height: 30px;
+	width: 100%;
+	height: 30px;
+	border-bottom: 1px solid;
+}
+
+.last-tr {
+	border-bottom: none;
+}
+
+.td {
+	float: left;
+	text-align: center;
+	height: 30px;
+	border-right: 1px solid;
+	
+}
+
+.last-td {
+	border-right: none;	
+}
+
+.bg-text {
+	text-align: left;
+	margin: 3px 0 0 5px;
+}
+
+.content {
+	font-family: "FangSong_GB2312";
+	font-size: 13px;
+}
+
+#goodlist-head .tr {
+	height: 14px;
+}
+
+#goodlist-head .td {
+	text-align: left;
+	height: 14px;
+	border-right: none;
+}
+
+#goodlist-head .goodlist-head-first {
+	margin-left: 5px;
+}
+
+#goodlist-items .tr {
+	height: 47px;
+	border-bottom: 1px dashed;
+}
+
+#goodlist-items .td {
+	text-align: left;
+	height: 47px;
+	border-right: none;
+	vertical-align: middle;
+}
+
+#goodlist-items .goodlist-items-first {
+	margin-left: 5px;
+}
+
+#goodlist-items .goodlist-last {
+	border-bottom: 1px solid;
+}

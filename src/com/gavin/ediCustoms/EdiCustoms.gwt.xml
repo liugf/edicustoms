@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='edicustoms'>
+	<inherits name='com.extjs.gxt.ui.GXT'/>
+	<entry-point class='com.gavin.ediCustoms.client.EdiCustoms' />
+	<extend-property name="locale" values="zh"/>
+	<source path='client' />
+	<source path='resources' />
+	<source path='entity' />
+	<source path='shared' />
+</module>

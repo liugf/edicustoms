@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>合同打印</title>
+<link type="text/css" href="contract.css" rel="stylesheet">
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		window.onafterprint=function(){$('#toolbar').show();}
+	});
+	function preview(isPreview) {
+		if (isPreview) {
+			$("div").css("border-color", "#000000");
+			$("div").css("color", "#000000");
+		} else {
+			$("#frame div").css("border-color", "#ffffff");
+			$("div").css("color", "#ffffff");
+			$(".content").css("color", "#000000");
+			$("#toorbar").css("color", "#000000");
+		}
+	}
+</script>
+</head>
+<body>
+<div id="toolbar">
+<button type="button"
+	onclick="javascript:$('#toolbar').hide();preview(true);window.print();">打印</button>
+</div>
+	<div id="frame">
+		<div style="width: 100%; height: 80px;"></div>
+		<div class="tr" style="height:100px;">
+			<div class="td" style="width:447px;height:100px; text-align: center;">
+				<h1>成&nbsp;交&nbsp;合&nbsp;同<br/><span style="font-size: 20px;">BUSINESS CONFIRMATION</span></h1>			
+			</div>
+			<div class="td" style="width:253px;height:100px;">
+				<div class="tr" >
+					<div class="td" style="width:78px;">合同号码:<br/>Contract No:</div>
+					<div class="td bold-value" style="width:175px;">${(contractNo[0])!""}</div>					
+				</div>
+				<div class="clear"></div>
+				<div class="tr" >
+					<div class="td" style="width:78px;">日&nbsp;&nbsp;&nbsp;&nbsp;期:<br/>Date:</div>
+					<div class="td bold-value" style="width:175px;">${dateTime?string("yyyy年MM月dd日")!""}</div>
+				</div>
+				<div class="clear"></div>
+				<div class="tr" >
+					<div class="td" style="width:78px;">签定地:<br/>Signd in:</div>
+					<div class="td bold-value" style="width:175px;">${signedIn[0]!""}</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="tr" >
+			<div class="td" style="width:78px;">买&nbsp;&nbsp;&nbsp;&nbsp;方:<br/>The Buyers:</div>
+			<div class="td bold-value" style="width:455px;">${foreignEnterprise.registeName!""}</div>
+			<div class="td" style="width:160px; padding-top: 10px; height: 20px;">&nbsp;电话:${foreignEnterprise.telephone!""}</div>
+		</div>
+		<div class="clear"></div>
+		<div class="tr" >
+			<div class="td" style="width:78px;">地&nbsp;&nbsp;&nbsp;&nbsp;址:<br/>Address:</div>
+			<div class="td bold-value" style="width:455px;">${foreignEnterprise.address!""}</div>
+			<div class="td" style="width:160px; padding-top: 10px; height: 20px;">&nbsp;传真:${foreignEnterprise.fax!""}</div>
+		</div>
+		<div class="clear"></div>
+		<div class="tr" >
+			<div class="td" style="width:78px;">卖&nbsp;&nbsp;&nbsp;&nbsp;方:<br/>The Sellers:</div>
+			<div class="td bold-value" style="width:455px;">${enterprise.registeName!""}</div>
+			<div class="td" style="width:160px; padding-top: 10px; height: 20px;">&nbsp;电话:${enterprise.telephone!""}</div>
+		</div>
+		<div class="clear"></div>
+		<div class="tr" >
+			<div class="td" style="width:78px;">地&nbsp;&nbsp;&nbsp;&nbsp;址:<br/>Address:</div>
+			<div class="td bold-value" style="width:455px;">${enterprise.address!""}</div>
+			<div class="td" style="width:160px; padding-top: 10px; height: 20px;">&nbsp;传真:${enterprise.fax!""}</div>
+		</div>
+		<div class="clear"></div>
+		
+		<div class="tr" style="height: 50px; margin-top: 5px; ">
+			1、兹经买卖双方同意由买方购进入下列货物，并按下列条款签定本合同：<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;This Purchase Contract is made by and between the Sellers and the Buyers whereby the Sellers agree to Sell<br/>
+			&nbsp;&nbsp;and the Buycrs agree to buy the under-mentioned goods according to the terms and conditions Stipulated below:
+		</div>
+		<div class="clear"></div>
+		
+		<div class="table">
+			<div class="tr" style="height:35px;" >
+				<div class="td" style="width:259px; height:35px;">商品名称，规格及包装<br/>Name of Commodity,Specification & packing</div>
+				<div class="td" style="width:103px; height:35px;">数&nbsp;&nbsp;&nbsp;&nbsp;量<br/>Quantity</div>
+				<div class="td" style="width:159px; height:35px;">买&nbsp;&nbsp;&nbsp;&nbsp;价<br/>Unit Price</div>
+				<div class="td last-td" style="width:175px; height:35px;">总&nbsp;&nbsp;&nbsp;&nbsp;值<br/>Total Value</div>
+			</div>				
+			
+			<#if (customsDeclarationGoods?size>5)>
+				<#assign listlen=5>
+			<#else>
+				<#assign listlen=customsDeclarationGoods?size>
+			</#if>
+			<#list customsDeclarationGoods[0..listlen-1]	as customsDeclarationGood>			
+			<div class="tr" style="border-bottom: none;">
+				<div class="td" style="width:259px;">${customsDeclarationGood.name!""}</div>
+				<div class="td" style="width:103px;">${customsDeclarationGood.quantity!""}${customsDeclarationGood.declareUnit!""}</div>
+				<div class="td" style="width:159px;">#{customsDeclarationGood.declarePrice!"";m2M2}</div>
+				<div class="td last-td" style="width:175px;">#{(customsDeclarationGood.declarePrice*customsDeclarationGood.quantity)!"";m2M2}</div>
+			</div>			
+			</#list>
+			
+			<#if (listlen<5)>
+				<#list 1..5-listlen as a>
+				
+			<div class="tr" style="border-bottom: none;">
+				<div class="td" style="width:259px;"></div>
+				<div class="td" style="width:103px;"></div>
+				<div class="td" style="width:159px;"></div>
+				<div class="td last-td" style="width:175px;"></div>
+			</div>	
+				
+				</#list>	
+			</#if>
+			
+			
+			<div class="tr">
+				<div class="td" style="width:259px;"><#if (customsDeclarationGoods?size>5)>（详见发票）</#if></div>
+				<div class="td" style="width:103px;">&nbsp;</div>
+				<div class="td" style="width:159px;">&nbsp;</div>
+				<div class="td last-td" style="width:175px; text-align: left;">成交方式：${dealMode[0]!""}</div>
+			</div>	
+			<div class="tr">
+				<div class="td" style="width:259px;text-align: left;">Total:</div>
+				<div class="td" style="width:103px;">&nbsp;</div>
+				<div class="td" style="width:159px;">&nbsp;</div>
+				<div class="td last-td" style="width:175px;">${customsDeclarationGoods[0].currency!""} #{totalPrice!"";m2M2}</div>
+			</div>	
+			<div class="tr last-tr" style="height:35px;" >
+			&nbsp;&nbsp;&nbsp;&nbsp;(允许卖方在装货时溢装或短装，${balance[0]!""}%价格按本合同所列单价计算）<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(Te Sellers are allowed to load ${balance[0]!""}% more or less.the price shall be calculated according to the unit price)
+			</div>	
+		</div>
+		<div class="clear"></div>
+		
+		<div class="tr" style="margin-top:5px;">
+			<div class="td" style="width:140px;">2、装运口岸:<br/>Port of Shipment:</div>
+			<div class="td" style="width:210px;">${iePort[0]!""}</div>
+			<div class="td" style="width:140px;">3、目的口岸:<br/>Port of Destination:</div>
+			<div class="td" style="width:210px;">${(destinationPort[0])!""}</div>
+		</div>
+		<div class="clear"></div>		
+		<div class="tr" >
+			<div class="td" style="width:140px;">4、装运期限:<br/>Time of Shipment:</div>
+			<div class="td" style="width:210px;">${(contractHead.exportDeadline?string("yyyy年MM月dd日"))!""}至${(contractHead.importDeadline?string("yyyy年MM月dd日"))!""}</div>
+			<div class="td" style="width:140px;">5、装运标记:<br/>Shiping Makr:</div>
+			<div class="td" style="width:210px;">${shipingMark[0]!""}</div>
+		</div>
+		<div class="clear"></div>
+		<div class="tr" >
+			<div class="td" style="width:140px;">6、付款条件:<br/>Terms of payment:</div>
+			<div class="td" style="width:560px;">${termsOfPayment[0]!""}</div>			
+		</div>
+		<div class="clear"></div>
+		<div class="tr" >
+			<div class="td" style="width:200px;">7、生产国别:<br/>Country of Origin & Manufacturer:</div>
+			<div class="td" style="width:400px;">${manufactureCountry[0]!""}</div>			
+		</div>
+		<div class="clear"></div>
+		<div class="tr" >
+			<div class="td" style="width:140px;">8、保险:<br/>Insurance:</div>
+			<div class="td" style="width:560px;">${insurance[0]!""}</div>
+		</div>
+		<div class="clear"></div>
+		<div class="tr" >
+			<div class="td" style="width:80px;">9、其他条款:</div>
+			<div class="td" style="width:620px;">(a)本合同其他事项均按交货条款之规定办理，该交货条款为合同之不可分割部分。<br/>(b)本合同以中，英文字书写，两种文字的条款具有同等效力。</div>
+		</div>
+		<div class="clear"></div>
+		<div class="tr" style="height:52px;">
+			<div class="td" style="width:80px;height:52px;">Other terms:</div>
+			<div class="td" style="width:620px;height:52px;">(a) Other matters relating to this Contract shall be dealt with in accordance with the terms Of<br/> &nbsp;&nbsp;&nbsp;&nbsp;delivery ,which shall form and integral part of this Contract.<br/>(b)This Contract is made out in Chinese and Engilsh ,both  versions being  equally authentic.</div>
+		</div>
+		<div class="clear"></div>
+		
+		<div class="tr" style="height:52px;"></div>
+		<div class="clear"></div>
+		
+		<div class="tr" style="height:40px;">
+			<div class="td" style="width:70px;height:40px;"></div>
+			<div class="td" style="width:144px;height:40px;text-align: center;border-bottom: 2px solid; font-size: 16px;">卖&nbsp;&nbsp;&nbsp;&nbsp;方<br/>THE SELLERS</div>
+			<div class="td" style="width:234px;height:40px;"></div>
+			<div class="td" style="width:144px;height:40px;text-align: center;border-bottom: 2px solid; font-size: 16px;">买&nbsp;&nbsp;&nbsp;&nbsp;方<br/>THE BUYERS</div>
+		</div>
+		<div class="clear"></div>
+		<div style="width: 100%; height: 70px;"></div>
+	</div>
+</body>
+</html>

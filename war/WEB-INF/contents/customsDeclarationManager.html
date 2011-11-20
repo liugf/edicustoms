@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title><#if isExport??><#if isExport>出<#else>进</#if><#else>进出</#if>口报关单统计表</title>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		window.onafterprint=function(){$('#toolbar').show();}
+	});
+</script>
+<style type="text/css">
+body{
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+#toolbar{
+	width: 100%;
+	height: 40px;
+	padding-top:10px;
+	text-align:center;
+	background-color: #a19b9b;
+	border-bottom: 1px solid #737070;
+}
+.title{
+	font-size: 14px;
+	font-weight: bold;
+}
+.headline{
+	width:100%;
+	height:25px;
+	line-height:25px;
+	text-align: left;
+}
+.frame{
+	margin: 0 auto;
+	width:700px;
+}
+.table{
+	width:100%;
+	font-size: 12px;
+}
+
+.table .tr {
+	float: none;
+	width: 100%;
+	height: 25px;
+}
+
+.table .td {
+	float: left;
+	height: 25px;
+	line-height: 25px;
+}
+.c1{
+	width:4%;
+}
+.c2{
+	width:11%;
+}
+.c3{
+	width:17%;
+}
+.c4{
+	width:4%;
+}
+.c5{
+	width:11%;
+}
+.c6{
+	width:18%;
+}
+.c7{
+	width:11%;
+}
+.c8{
+	width:11%;
+}
+.c9{
+	width:11%;
+}
+
+
+</style>
+</head>
+<body>
+	<div id="toolbar" >
+		<button type="button" onclick="javascript:$('#toolbar').hide();window.print();">打印</button>
+	</div>
+	<div class="frame">
+		<div style="height:20px; width:100%"></div>
+		<div class="title"><#if isExport??><#if isExport>出<#else>进</#if><#else>进出</#if>口报关单统计表</div>
+		<div class="headline">
+			<div style="width:50%; float:left;">企业名称：${enterprise.tradeCode!""} ${enterprise.registeName!""}</div>
+			<#if contractNo??><div style="width:50%; float:left;">合同号:${contractNo!""}</div></#if>
+		</div>
+		<div class="headline">
+			统计时间：${(startDate?string("yyyy-MM-dd"))!""} 至 ${(endDate?string("yyyy-MM-dd"))!today?string("yyyy-MM-dd")}　　　　
+			<#if isExport??><#if isExport>出<#else>进</#if><#else>进出</#if>口${customsDeclarationHeads?size}份
+		</div>
+		
+		<div class="table" style="border-top: solid 1px;">
+			<div class="tr" style="border-bottom: 1px solid;">
+				<div class="td c1">序号</div>
+				<div class="td c2">申报日期</div>
+				<div class="td c3">报关单号</div>
+				<div class="td c4">页数</div>
+				<div class="td c5">收汇号</div>
+				<div class="td c6">集装箱号</div>
+				<div class="td c7">总毛重</div>
+				<div class="td c8">总净重</div>
+				<div class="td c9">总金额</div>
+			</div>
+			<#list customsDeclarationHeads as customsDeclarationHead>
+			<div class="tr">
+				<div class="td c1">${customsDeclarationHead_index+1}</div>
+				<div class="td c2">${customsDeclarationHead.declareTime?string("yyyy-MM-dd")!""}</div>
+				<div class="td c3">${customsDeclarationHead.entryId!""}</div>
+				<div class="td c4">${customsDeclarationHead.pageNum!""}</div>
+				<div class="td c5"></div>
+				<div class="td c6">${customsDeclarationHead.containerNo!""}</div>
+				<div class="td c7">${customsDeclarationHead.grossWeight?c!""}</div>
+				<div class="td c8">${customsDeclarationHead.netWeight?c!""}</div>
+				<div class="td c9">#{customsDeclarationHead.totleMoney!"";m2M2}</div>
+			</div>
+			</#list>
+			<div class="tr" style="border-top: 1px solid;">
+				<div class="td c1">${customsDeclarationHeads?size}份</div>
+				<div class="td c2"></div>
+				<div class="td c3"></div>
+				<div class="td c4">${totlePage!""}</div>
+				<div class="td c5"></div>
+				<div class="td c6"></div>
+				<div class="td c7">${totleGrossWeight?c!""}</div>
+				<div class="td c8">${totleNetWeight?c!""}</div>
+				<div class="td c9">#{totleMoney!"";m2M2}</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

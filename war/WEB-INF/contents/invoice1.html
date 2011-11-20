@@ -1,0 +1,111 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>发票打印</title>
+<link type="text/css" href="invoice1.css" rel="stylesheet">
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		window.onafterprint=function(){$('#toolbar').show();}
+	});
+	function preview(isPreview) {
+		if (isPreview) {
+			$("div").css("border-color", "#000000");
+			$("div").css("color", "#000000");
+		} else {
+			$("#frame div").css("border-color", "#ffffff");
+			$("div").css("color", "#ffffff");
+			$(".content").css("color", "#000000");
+			$("#toorbar").css("color", "#000000");
+		}
+	}
+</script>
+
+</head>
+<body>
+<div id="toolbar">
+<button type="button"
+	onclick="javascript:$('#toolbar').hide();preview(true);window.print();">打印</button>
+</div>
+<div id="frame">
+<div style="width: 100%; height: 80px;"></div>
+<div class="tr" style="text-align: center; height: 50px;">
+<h1><b>发　　票</b><br />
+INVOICE</h1>
+</div>
+<div class="tr" style="height: 20px;">
+<div class="td" style="height: 20px; width: 481px;"></div>
+<div class="td" style="height: 20px; width: 70px;"><span class="bgText">发票号码：</span></div>
+<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;">${(invoiceNo[0])!""}</div>
+</div>
+<div class="tr" style="height: 20px; margin-top: 10px;">
+<div class="td" style="height: 20px; width: 70px;"><span class="bgText">商　　号：</span></div>
+<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;">${foreignEnterprise.registeName!""}</div>
+<div class="td" style="height: 20px; width: 92px;"></div>
+<div class="td" style="height: 20px; width: 70px;"><span class="bgText">合同号码：</span></div>
+<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;">${contractNo[0]!""}</div>
+</div>
+<div class="tr" style="height: 20px; margin-top: 10px;">
+<div class="td" style="height: 20px; width: 70px;"><span class="bgText"><#if customsDeclarationHead.isExport>发货单位：<#else>收货单位：</#if></span></div>
+<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;">${enterprise.registeName!""}</div>
+<div class="td" style="height: 20px; width: 92px;"></div>
+<div class="td" style="height: 20px; width: 70px;"><span class="bgText">日　　期：</span></div>
+<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;">${(dateTime?string("yyyy年MM月dd日"))!""}</div>
+</div>
+<div class="clear"></div>
+
+<div class="table" style=" margin-top: 10px; border-left: none; border-right: none;border-bottom: none; ">
+<div class="tr header" style="border-bottom: 1px solid;">
+<div class="td header" style="width: 64px;"><span class="bgText">唛头</span></div>
+<div class="td header" style="width: 324px;"><span class="bgText">商品名称/规格&nbsp;&nbsp;型号</span></div>
+<div class="td header" style="width: 92px;"><span class="bgText">数量/单位</span></div>
+<div class="td header" style="width: 90px;"><span class="bgText">单价</span></div>
+<div class="td header last-td" style="width: 125px;"><span class="bgText">总价</span></div>
+</div>
+<div class="tr last-tr" style="height: 610px;">
+<div class="td" style="height: 744px; width: 64px;">${shipingMark[0]!""}</div>
+<div class="td last-td" style="height: 610px; width: 635px;">
+<#if (customsDeclarationGoods?size>23)> 
+	<#assign listlen=23> 
+<#else>
+	<#assign listlen=customsDeclarationGoods?size> 
+</#if> 
+<#if (customsDeclarationGoods?size>0)>
+<#list customsDeclarationGoods[0..listlen-1] as customsDeclarationGood>
+<div class="tr">
+<div class="td" style="width: 324px;">${customsDeclarationGood.name!""}<#if (customsDeclarationGood.shenbaoguifan?? && customsDeclarationGood.shenbaoguifan!="")>/</#if>${customsDeclarationGood.shenbaoguifan!""}</div>
+<div class="td" style="width: 92px;">${customsDeclarationGood.quantity?string("0.###")!""}${customsDeclarationGood.declareUnit!""}</div>
+<div class="td" style="width: 90px;">#{customsDeclarationGood.declarePrice!"";m2M2}</div>
+<div class="td last-td" style="width: 125px;">#{customsDeclarationGood.totalPrice!"";m2M2}</div>
+</div>
+</#list> 
+</#if>
+<#if (listlen<23)> <#list 1..23-listlen as a>
+<div class="tr">
+<div class="td" style="width: 324px;"></div>
+<div class="td" style="width: 92px;"></div>
+<div class="td" style="width: 90px;"></div>
+<div class="td last-td" style="width: 125px;"></div>
+</div>
+</#list> 
+</#if>
+
+<#if (customsDeclarationGoods?size>0)>
+<div class="tr">
+<div class="td" style="width: 324px;">成交方式：${dealMode[0]!""}　${dealModeAddress[0]!""}</div>
+<div class="td" style="width: 92px;"></div>
+<div class="td" style="width: 90px;">总值(${customsDeclarationGoods[0].currency!""})</div>
+<div class="td last-td" style="width: 125px;">#{totalPrice!"";m2M2}</div>
+</div>
+</#if>
+
+</div>
+</div>
+
+
+</div>
+
+<div style="width: 100%; height: 20px;"></div>
+</div>
+</body>
+</html>

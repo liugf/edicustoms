@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>大陆司机纸打印</title>
+<link type="text/css" href="driverPaper.css" rel="stylesheet">
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		window.onafterprint=function(){$('#toolbar').show();}
+	});
+</script>
+<style type="text/css">
+#content{
+	position:relative;
+	top:175px;
+	left:33px;
+	width: 1050px;
+	height: 600px;
+	font-size: 14px;
+}
+
+#content div{
+	position: absolute;
+}
+
+</style>
+
+</head>
+<body>
+<div id="toolbar">
+<button type="button"
+	onclick="javascript:$('#toolbar').hide();window.print();">打印</button>
+</div>
+<div id="frame">
+	<div id="content">
+		<div style="top:15px; left:185px;">${truckNo[0]}</div>
+		<div style="top:15px; left:400px;">${hkTruckNo[0]}</div>
+		<div style="top:40px; left:130px;">${declareTime[0]}</div>
+		<div style="top:40px; left:350px;">${ownerDistrict[0]}</div>
+		<div style="top:40px; left:600px;">${destinationPort[0]}</div>
+		
+		<div style="top:105px; left:30px;">${no[0]}</div>
+		<div style="top:105px; left:60px;">${goodNameAndModel[0]}</div>
+		<div style="top:130px; left:60px;">${andMore[0]}</div>
+		<div style="top:105px; left:213px;">${goodCode[0]}</div>
+		<div style="top:105px; left:300px;">${wrapType[0]}</div>
+		<div style="top:105px; left:370px;">${netWeight[0]}</div>
+		<div style="top:105px; left:430px;">${totleMoney[0]}</div>
+		<div style="top:105px; left:550px;">${enterpriseName[0]}</div>
+		<div style="top:105px; left:770px;">${foreignEnterpriseName[0]}</div>
+		
+		<div style="top:262px; left:78px;">${packNo[0]}</div>
+		<div style="top:262px; left:320px;">${grossWeight[0]}</div>
+		<div style="top:262px; left:630px;">${containerNo[0]}</div>
+		
+		<div style="top:292px; left:260px;">${enterpriseName2[0]}</div>
+		<div style="top:318px; left:130px;">${truckCorporationName[0]}</div>
+		<div style="top:344px; left:130px;">${truckCorporationAddress[0]}</div>
+		<div style="top:370px; left:130px;">${truckCorporationTelephone[0]}</div>
+		<div style="top:370px; left:610px;">${truckDriverName[0]}</div>
+		
+		<div style="top:402px; left:140px;">${contractNo[0]}</div>
+		<div style="top:432px; left:140px;">${tradeMode[0]}</div>
+		<div style="top:467px; left:140px;">${originCountry[0]}</div>
+		<div style="top:497px; left:140px;">${iePort[0]}</div>
+		<div style="top:517px; left:140px;">${declareCustoms[0]}</div>
+		<div style="top:542px; left:140px;">${truckCode[0]}</div>
+	</div>
+</div>
+</body>
+</html>

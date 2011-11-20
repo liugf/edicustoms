@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>报关单打印</title>
+<link type="text/css" href="/customsDeclaration.css" rel="stylesheet">
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		window.onafterprint=function(){$('#toolbar').show();}
+	});
+	function preview(isPreview){
+		if(isPreview){
+			$("div").css("border-color","#000000");
+			$("div").css("color","#000000");
+		}else{
+			$("#frame div").css("border-color","#ffffff");
+			$("div").css("color","#ffffff");
+			$(".content").css("color","#000000");
+			$("#toorbar").css("color","#000000");
+		}		
+	}	
+	
+</script>
+
+</head>
+<body>
+	<div id="toolbar" >
+		<button type="button" onclick="javascript:preview(true);">打印预览</button>
+		<button type="button" onclick="javascript:$('#toolbar').hide();preview(true);window.print();">打印</button>
+		&nbsp;
+		<button type="button" onclick="javascript:preview(false);">套打预览</button>
+		<button type="button" onclick="javascript:$('#toolbar').hide();preview(false);window.print();">套打</button>
+		&nbsp;
+		<button type="button" onclick="javascript:window.open('customsDeclarationDraft.do?id=${customsDeclarationHead.id!""}');">打印草稿</button>
+	</div>
+	
+	<#assign goodsCount = customsDeclarationGoods?size />
+	<#if goodsCount!=0 >
+		<#assign pages = 1..((goodsCount-1)/5+1)?int />
+	<#else>
+		<#assign pages = [1] />
+	</#if>
+	
+	<#list pages as pageNum>
+	
+	<#if goodsCount!=0 >
+		<#assign pageStart = (pageNum-1)*5 >
+		<#if (pageNum*5 > goodsCount)>
+			<#assign pageEnd = goodsCount-1 >
+		<#else>
+			<#assign pageEnd = pageNum*5-1 >
+		</#if>
+		<#assign goods = customsDeclarationGoods[pageStart..pageEnd] />
+	<#else >
+		<#assign goods = customsDeclarationGoods />
+	</#if>
+	
+	
+	
+	
+	<div class="frame">
+		<div style="width:100%;height:70px;">
+		<#if customsDeclarationHead.electronicPort?? && customsDeclarationHead.electronicPort?trim != "">
+			<div id='barcode1'><img src="barcode?msg=${customsDeclarationHead.electronicPort!""}&height=7&mw=0.15" alt="barcode" width="310" height="41" /></div>
+		</#if>
+		<#if customsDeclarationHead.entryId?? && customsDeclarationHead.entryId?trim != "">
+			<div id='barcode2'><img src="barcode?msg=${customsDeclarationHead.entryId!""}&height=7&mw=0.15" alt="barcode" width="310" height="41" /></div>
+		</#if>
+		</div>
+		<div id="title">
+			<h1><#if customsDeclarationHead.isExport>中华人民共和国海关出口货物报关单<#else>中华人民共和国海关进口货物报关单</#if></h1>			
+		</div>
+		<div id="top">
+			<div id="top-left">预录入编号：<span class="content">${customsDeclarationHead.preEntryId!""}</span></div>
+			<div id="top-right">海关编号：<span class="content">${customsDeclarationHead.entryId!""}</span></div>
+			<div class="clear"></div>
+		</div>
+		
+		<div class="table">
+			<div class="tr">
+				<div class="td" style="width:295px;"><div class="bg-text"><#if customsDeclarationHead.isExport>出口口岸<#else>进口口岸</#if></div> <span class="content">${customsDeclarationHead.iePort!""}</span></div>
+				<div class="td" style="width:170px;"><div class="bg-text">备案号</div> <span class="content">${manualNo!""}</span></div>
+				<div class="td" style="width:142px;"><div class="bg-text"><#if customsDeclarationHead.isExport>出口日期<#else>进口日期</#if></div> <span class="content">${(customsDeclarationHead.ieDate?string("yyyy年MM月dd日"))!""}</span></div>
+				<div class="td last-td" style="width:128px;"><div class="bg-text">申报日期</div> <span class="content">${(customsDeclarationHead.declareTime?string("yyyyMMdd"))!""}</span></div>
+			</div>
+			<div class="tr">
+				<div class="td" style="width:295px;"><div class="bg-text">经营单位</div> <span class="content">${runEnterprise.registeName!""}(${runEnterprise.tradeCode!""})</span></div>
+				<div class="td" style="width:79px;"><div class="bg-text">运输方式</div> <span class="content">${customsDeclarationHead.transportMode!""}</span></div>
+				<div class="td" style="width:171px;"><div class="bg-text">运输工具名称</div> <span class="content">${customsDeclarationHead.transportTool!""}</span></div>
+				<div class="td last-td" style="width:190px;"><div class="bg-text">提运单号</div> <span class="content">${customsDeclarationHead.billNo!""}</span></div>
+			</div>
+			<div class="tr">
+				<div class="td" style="width:295px;"><div class="bg-text"><#if customsDeclarationHead.isExport>发货单位<#else>收货单位</#if></div> <span class="content">${enterprise.registeName!""}(${enterprise.tradeCode!""})</span></div>
+				<div class="td" style="width:157px;"><div class="bg-text">贸易方式</div> <span class="content">${customsDeclarationHead.tradeMode!""}</span></div>
+				<div class="td" style="width:152px;"><div class="bg-text">征免性质</div> <span class="content">${customsDeclarationHead.taxKind!""}</span></div>
+				<div class="td last-td" style="width:131px;"><div class="bg-text"><#if customsDeclarationHead.isExport>结汇方式<#else>征税比例</#if></div> <span class="content"><#if customsDeclarationHead.isExport>${customsDeclarationHead.payWay!""}</#if></span></div>
+			</div>
+			<div class="tr">
+				<div class="td" style="width:210px;"><div class="bg-text">许可证号</div> <span class="content">${customsDeclarationHead.licenseNo!""}</span></div>
+				<div class="td" style="width:186px;"><div class="bg-text"><#if customsDeclarationHead.isExport>运抵国（地区）<#else>起运国（地区）</#if></div> <span class="content">${customsDeclarationHead.tradeCountry!""}</span></div>
+				<div class="td" style="width:189px;"><div class="bg-text"><#if customsDeclarationHead.isExport>指运港<#else>装货港</#if></div> <span class="content">${customsDeclarationHead.destinationPort!""}</span></div>
+				<div class="td last-td" style="width:152px;"><div class="bg-text"><#if customsDeclarationHead.isExport>境内货源地<#else>境内目的地</#if></div> <span class="content">${customsDeclarationHead.ownerDistrict!""}</span></div>
+			</div>
+			<div class="tr">
+				<div class="td" style="width:210px;"><div class="bg-text">批准文号</div> <span class="content">${customsDeclarationHead.certificationCode!""}</span></div>
+				<div class="td" style="width:97px;"><div class="bg-text">成交方式</div> <span class="content">${customsDeclarationHead.dealMode!""}</span></div>
+				<div class="td" style="width:157px;"><div class="bg-text">运费</div> <span class="content">#{customsDeclarationHead.feeRate!"";m2M2}</span></div>
+				<div class="td" style="width:131px;"><div class="bg-text">保费</div> <span class="content">#{customsDeclarationHead.insurRate!"";m2M2}</span></div>
+				<div class="td last-td" style="width:152px;"><div class="bg-text">杂费</div> <span class="content">#{customsDeclarationHead.otherRate!"";m2M2}</span></div>
+			</div>
+			<div class="tr">
+				<div class="td" style="width:210px;"><div class="bg-text">合同协议号</div> <span class="content">${customsDeclarationHead.contractNo!""}</span></div>
+				<div class="td" style="width:133px;"><div class="bg-text">件数</div> <span class="content">${customsDeclarationHead.packNo!""}</span></div>
+				<div class="td" style="width:121px;"><div class="bg-text">包装种类</div> <span class="content">${customsDeclarationHead.wrapType!""}</span></div>
+				<div class="td" style="width:145px;"><div class="bg-text">毛重</div> <span class="content">${customsDeclarationHead.grossWeight!""}</span></div>
+				<div class="td last-td" style="width:128px;"><div class="bg-text">净重</div> <span class="content">${customsDeclarationHead.netWeight!""}</span></div>
+			</div>
+			<div class="tr">
+				<div class="td" style="width:210px;"><div class="bg-text">集装箱号</div> <span class="content">${container!""}</span></div>
+				<div class="td" style="width:370px;"><div class="bg-text">随附单证</div> <span class="content">${attachment!""}</span></div>
+				<div class="td last-td" style="width:157px;"><div class="bg-text">用途</div> <span class="content"><#if !customsDeclarationHead.isExport>${customsDeclarationHead.useage!""}</#if></span></div>
+			</div>
+			
+			
+			
+			<div class="tr" style="height: 67px;margin: 5px 0 0 5px;">
+				<div class="td last-td" style="width:696px;height:60px;text-align: left;"><div class="bg-text">标记唛码及备注</div> <span class="content">[装卸口岸]${customsDeclarationHead.loadPort!""}&nbsp;&nbsp;${customsDeclarationHead.note!""}&nbsp;&nbsp;${customsDeclarationHead.certMark!""}</span></div>
+			</div>
+			
+			
+			<div id="goodlist-head">
+				<div class="tr">
+					<div class="td goodlist-head-first" style="width:32px;">项号</div>
+					<div class="td" style="width:80px;">商品编号</div>
+					<div class="td" style="width:185px;">商品名称、规格型号</div>
+					<div class="td" style="width:105px;">数量及单位</div>
+					<div class="td" style="width:180px;">最终目的国（地区）单价</div>
+					<div class="td" style="width:80px;">总价</div>
+					<div class="td" style="width:35px;">币制</div>
+					<div class="td last-td" style="width:30px;">征免</div>
+				</div>					
+			</div>
+			<div id="goodlist-items">
+				<#if (goods?size>5)>
+					<#assign listlen=5>
+				<#else>
+					<#assign listlen=goods?size>
+				</#if>
+				<#if (goods?size>0)>
+					<#list goods[0..listlen-1] as customsDeclarationGood>	
+					<div class="tr<#if customsDeclarationGood_index=4> goodlist-last</#if>">
+						<div class="td goodlist-items-first" style="width:46px;"><span class="content">${customsDeclarationGood.no!""}<br/><#if !isNomalTrade><#if customsDeclarationGood.noInContract??>(${customsDeclarationGood.noInContract!""})</#if></#if></span></div>
+						<div class="td" style="width:86px; margin-left: -20px;"><span class="content">${customsDeclarationGood.codeTS!""}</span></div>
+						<div class="td" style="width:206px;"><span class="content">${customsDeclarationGood.name!""}<#if customsDeclarationGood.shenbaoguifan??>/</#if>${customsDeclarationGood.shenbaoguifan!""}</span></div>
+						<div class="td" style="width:85px; text-align: right;"><span class="content">${customsDeclarationGood.quantity?string("0.###")!""}${customsDeclarationGood.declareUnit!""}<br/>${customsDeclarationGood.quantity1?string("0.###")!""}${customsDeclarationGood.unit1!""}<br/><#if customsDeclarationGood.quantity2 != 0> ${customsDeclarationGood.quantity2!""}${customsDeclarationGood.unit2!""}</#if></span></div>
+						<div class="td" style="width:66px; padding-left: 3px;"><span class="content">${customsDeclarationGood.originCountry!""}</span></div>
+						<div class="td" style="width:81px;"><span class="content">#{customsDeclarationGood.declarePrice!"";m2M4}</span></div>
+						<div class="td" style="width:93px;"><span class="content">#{customsDeclarationGood.totalPrice!"";m2M2}<#if customsDeclarationHead.isExport><br/>${customsDeclarationHead.useage!""}</#if></span></div>
+						<div class="td" style="width:42px;"><span class="content">${customsDeclarationGood.currency!""}</span></div>
+						<div class="td last-td" style="width:52px;"><span class="content">${customsDeclarationGood.taxMode!""}</span></div>
+					</div>
+					</#list>
+				</#if>
+				
+				<#if (listlen<5)>
+					<#list 1..5-listlen as a>
+					
+				<div class="tr<#if a_index=4-listlen> goodlist-last</#if>">
+					<div class="td goodlist-items-first" style="width:32px;"></div>
+					<div class="td" style="width:80px;"></div>
+					<div class="td" style="width:175px;"></div>
+					<div class="td" style="width:105px;"></div>
+					<div class="td" style="width:80px;"></div>
+					<div class="td" style="width:50px;"></div>
+					<div class="td" style="width:65px;"></div>
+					<div class="td" style="width:55px;"></div>
+					<div class="td last-td" style="width:50px;"></div>
+				</div>
+					
+					</#list>	
+				</#if>	
+				
+			</div>
+			
+			<div class="tr" style="height: 173px;">
+				<div class="td last-td" style="width:696px;height:150px;">
+					<div class="bg-text">税费征收情况</div> 
+				</div>
+			</div>
+			
+			<div class="tr last-tr" style="height: 166px;">
+				<div class="td" style="width:248px;height:166px; border-right: none;">
+					<div class="tr" style="height: 45px; border-bottom: none;">
+						<div class="td" style="width:93px;height:45px;border-bottom:1px solid;border-right: none;"><div class="bg-text">录入员</div> <span class="content">${customsDeclarationHead.operator!""}</span></div>
+						<div class="td" style="width:116px;height:45px;border-bottom:1px solid;"><div class="bg-text">录入单位</div> <span class="content"></span></div>				
+					</div>	
+					<div class="tr" style="height: 45px; border-bottom: none;">
+						<div class="td last-td" style="width:200px;height:45px;"><div class="bg-text">报关员</div> <span class="content">${customsDeclarationHead.declarant!""}</span></div>				
+					</div>
+					<div class="tr" style="height: 50px; border-bottom: none;">
+						<div class="td last-td" style="width:200px;height:50px;"><div class="bg-text">单位地址</div> <span class="content">${runEnterprise.address!""}</span></div>				
+					</div>	
+					<div class="tr" style="height: 14px; border-bottom: none;">
+						<div class="td last-td" style="width:117px;height:16px;"><div class="bg-text">邮编&nbsp;<span class="content"></span></div></div>	
+						<div class="td last-td" style="width:121px;height:16px;"><div class="bg-text">电话&nbsp;<span class="content">${runEnterprise.phone!""}</span></div></div>				
+					</div>							
+				</div>
+				<div class="td" style="width:236px;height:166px;">
+					<div class="tr" style="height: 75px; border-bottom: none;">
+						<div class="td last-td" style="width:100%;height:75px;"><div class="bg-text">兹声明以上申报无讹并承担法律责任</div> </div>				
+					</div>	
+					<div class="tr" style="height: 65px; border-bottom: none;">
+						<div class="td last-td" style="width:100%;height:65px;"><div class="bg-text" style="margin-left: 20px;">申报单位（签章）</div><span class="content">${declareEnterprise.registeName!""}</span> </div>				
+					</div>	
+					<div class="tr" style="height: 14px; border-bottom: none;">
+						<div class="td last-td" style="width:100%;height:16px;"><div class="bg-text"  style="margin-left: 20px;">填制日期&nbsp;<span class="content">${(customsDeclarationHead.declareTime?string("yyyyMMdd"))!""}</span></div></div>	
+					</div>	
+				</div>
+				
+				<div class="td last-td" style="width:266px;height:166px;">
+					<div class="tr" style="height: 38px; border-bottom: none;">
+						<div class="td last-td" style="width:100%;height:38px;"><div class="bg-text">海关审单批注及放行日期（签章）</div></div>				
+					</div>	
+					<div class="tr" style="height: 36px;">
+						<div class="td last-td" style="width:95px;height:36px;"><div class="bg-text">审单</div></div>
+						<div class="td last-td" style="width:142px;height:36px;"><div class="bg-text">审价</div> </div>				
+					</div>		
+					<div class="tr" style="height: 45px;">
+						<div class="td last-td" style="width:95px;height:45px;"><div class="bg-text">征税</div></div>
+						<div class="td last-td" style="width:142px;height:45px;"><div class="bg-text">统计</div></div>				
+					</div>	
+					<div class="tr last-tr" style="height: 45px;">
+						<div class="td last-td" style="width:95px;height:45px;"><div class="bg-text">查验</div></div>
+						<div class="td last-td" style="width:142px;height:45px;"><div class="bg-text">放行</div></div>				
+					</div>			
+				</div>
+				
+			</div>
+		</div>		
+		<div style="width:100%;height:20px;"></div>
+		
+		
+		
+	</div>
+
+	<#if  pages?size!=pageNum_index+1 >
+	<div style="page-break-before: always;">
+	   <!--[if IE 7]><br style="height:0; line-height:0"><![endif]-->
+	</div>
+	<div style="width:100%;height:35px;"></div>
+	</#if>
+	
+	</#list>
+</body>
+</html>
+
