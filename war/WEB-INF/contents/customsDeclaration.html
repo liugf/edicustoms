@@ -139,7 +139,7 @@
 					<div class="td" style="width:80px;">总价</div>
 					<div class="td" style="width:35px;">币制</div>
 					<div class="td last-td" style="width:30px;">征免</div>
-				</div>					
+				</div>
 			</div>
 			<div id="goodlist-items">
 				<#if (goods?size>5)>
@@ -155,8 +155,8 @@
 						<div class="td" style="width:206px;"><span class="content">${customsDeclarationGood.name!""}<#if customsDeclarationGood.shenbaoguifan??>/</#if>${customsDeclarationGood.shenbaoguifan!""}</span></div>
 						<div class="td" style="width:85px; text-align: right;"><span class="content">${customsDeclarationGood.quantity?string("0.###")!""}${customsDeclarationGood.declareUnit!""}<br/>${customsDeclarationGood.quantity1?string("0.###")!""}${customsDeclarationGood.unit1!""}<br/><#if customsDeclarationGood.quantity2 != 0> ${customsDeclarationGood.quantity2!""}${customsDeclarationGood.unit2!""}</#if></span></div>
 						<div class="td" style="width:66px; padding-left: 3px;"><span class="content">${customsDeclarationGood.originCountry!""}</span></div>
-						<div class="td" style="width:81px;"><span class="content">#{customsDeclarationGood.declarePrice!"";m2M4}</span></div>
-						<div class="td" style="width:93px;"><span class="content">#{customsDeclarationGood.totalPrice!"";m2M2}<#if customsDeclarationHead.isExport><br/>${customsDeclarationHead.useage!""}</#if></span></div>
+						<div class="td" style="width:81px;"><span class="content">${customsDeclarationGood.declarePrice?string("0.00##")!""}</span></div>
+						<div class="td" style="width:93px;"><span class="content">${customsDeclarationGood.totalPrice?string("0.00##")!""}<#if customsDeclarationHead.isExport><br/>${customsDeclarationHead.useage!""}</#if></span></div>
 						<div class="td" style="width:42px;"><span class="content">${customsDeclarationGood.currency!""}</span></div>
 						<div class="td last-td" style="width:52px;"><span class="content">${customsDeclarationGood.taxMode!""}</span></div>
 					</div>

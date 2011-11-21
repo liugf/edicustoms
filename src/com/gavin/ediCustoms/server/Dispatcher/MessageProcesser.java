@@ -12,6 +12,7 @@ import org.dom4j.io.SAXReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gavin.ediCustoms.entity.edi.DispatchRecord;
 import com.gavin.ediCustoms.entity.edi.Enterprise;
 import com.gavin.ediCustoms.entity.edi.core.CustomsDeclarationHead;
 import com.gavin.ediCustoms.server.dao.CustomsDeclarationHeadDao;

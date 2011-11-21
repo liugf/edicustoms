@@ -1,4 +1,4 @@
-package com.gavin.ediCustoms.server.Dispatcher;
+package com.gavin.ediCustoms.entity.edi;
 
 import java.util.Date;
 

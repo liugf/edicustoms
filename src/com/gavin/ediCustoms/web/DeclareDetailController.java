@@ -9,9 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gavin.ediCustoms.entity.edi.DispatchRecord;
 import com.gavin.ediCustoms.entity.edi.core.CustomsDeclarationHead;
 import com.gavin.ediCustoms.entity.edi.dictionary.ReceiptType;
-import com.gavin.ediCustoms.server.Dispatcher.DispatchRecord;
 import com.gavin.ediCustoms.server.Dispatcher.DispatchRecordDao;
 import com.gavin.ediCustoms.server.dao.CustomsDeclarationHeadDao;
 import com.gavin.ediCustoms.server.dao.dictionary.ReceiptTypeDao;
