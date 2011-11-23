@@ -26,6 +26,8 @@
 		<property name="minPoolSize" value="1" />
 		<property name="initialPoolSize" value="1" />
 		<property name="maxIdleTime" value="20" />
+		<property name="user" value="root" />
+		<property name="password" value="gavin" />
 	</bean>
 
 	<bean id="sessionFactory"
@@ -47,8 +49,6 @@
 				<property name="dataSource">
 					<bean parent="dataSource">
 						<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/edicustoms" />
-						<property name="user" value="root" />
-						<property name="password" value="gavin" />
 					</bean>
 				</property>
 				<property name="packagesToScan" value="com.gavin.ediCustoms.entity.edi." />
@@ -63,8 +63,6 @@
 				<property name="dataSource">
 					<bean parent="dataSource">
 						<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/share" />
-						<property name="user" value="root" />
-						<property name="password" value="gavin" />
 					</bean>
 				</property>
 				<property name="packagesToScan" value="com.gavin.ediCustoms.entity.share." />
