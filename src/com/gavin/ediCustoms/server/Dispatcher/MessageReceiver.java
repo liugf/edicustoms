@@ -59,7 +59,7 @@ public class MessageReceiver implements ServletContextListener {
 				if (rename(files[i], newFile)) {
 					System.out.println("移动"+files[i].getAbsolutePath()+"到"+newFile.getAbsolutePath());
 				}else {
-					System.out.println("移动文件"+newFile.getAbsolutePath()+"失败");
+					System.out.println("移动文件"+files[i].getAbsolutePath()+"失败");
 				}
     		}
         }
@@ -71,6 +71,9 @@ public class MessageReceiver implements ServletContextListener {
 	}
 	
 	private boolean rename(File file1,File file2){
+		if (!file1.exists()) {
+			return false;
+		}
 		try {
 			if (file2.exists()) {
 				file2.delete();
