@@ -37,11 +37,7 @@ public class MessageProcesser {
 				dispatchRecord.setChannel("000");
 				dispatchRecord.setNote("生成报文成功");
 				dispatchRecord.setDate(new Date());
-				dispatchRecordDao.save(dispatchRecord);				
-				
-				/*CustomsDeclarationHead customsDeclarationHead=customsDeclarationHeadDao.get(dispatchRecord.getCustomsDeclarationHeadId());
-				customsDeclarationHead.setIsDeclared(true);		
-				customsDeclarationHeadDao.update(customsDeclarationHead);*/
+				dispatchRecordDao.save(dispatchRecord);	
 			}
 		} catch (Exception e) {			
 			e.printStackTrace();
@@ -178,58 +174,6 @@ public class MessageProcesser {
 			}
 			
 		}
-		
-		
-		/*try {
-			if (responeFile.exists()) {
-				Map<String,String> map = new HashMap<String,String>();
-				map.put("tcs","http://www.chinaport.gov.cn/tcs/v2");
-		        reader.getDocumentFactory().setXPathNamespaceURIs(map);
-				Document document = reader.read(responeFile);
-				List<Element> list=document.selectNodes("/TCS101Message/MessageHead/MessageType");
-				String messageType=list.get(0).getText();
-				if (messageType.equals("TcsFlow201Response")) {
-					
-					list=document.selectNodes("//tcs:TaskId");
-					String taskId=list.get(0).getText();	
-										
-					list=document.selectNodes("//tcs:RequestMessageId");
-					String requestMessageId=list.get(0).getText();	
-					
-					updateTaskId(requestMessageId, taskId);
-				
-				}else {
-					list=document.selectNodes("//tcs:TaskId");
-					String taskId=list.get(0).getText();	
-					
-					list=document.selectNodes("//tcs:EportNo");
-					String eportNo=list.get(0).getText();
-					
-					list=document.selectNodes("//tcs:Channel");
-					String channel=list.get(0).getText();
-					
-					String note=null;
-					String entryNo=null;
-					if (channel.equals("001")) {
-						list=document.selectNodes("//tcs:ResultInformation");
-						note=list.get(0).getText();
-					} else if (channel.equals("016")) {
-						list=document.selectNodes("//tcs:Note");
-						note=list.get(0).getText();
-						list=document.selectNodes("//tcs:EntryNo");
-						entryNo=list.get(0).getText();
-					}else {
-						list=document.selectNodes("//tcs:Note");
-						note=list.get(0).getText();
-					}
-					
-					updateEportNo(taskId, eportNo,channel,note,entryNo);
-					
-				}
-			}
-		} catch (Exception e) {			
-			e.printStackTrace();
-		}*/
 		
 	}
 	

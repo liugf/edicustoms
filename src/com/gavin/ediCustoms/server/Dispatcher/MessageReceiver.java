@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -66,7 +67,7 @@ public class MessageReceiver implements ServletContextListener {
 	}
 	
 	private void processMessage(String address){
-		System.out.println("处理报文"+address);
+		System.out.println(new Date()+"处理报文"+address);
 		messageProcesser.processReturnMessage(address);
 	}
 	
