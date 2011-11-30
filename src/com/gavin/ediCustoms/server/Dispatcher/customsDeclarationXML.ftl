@@ -236,7 +236,7 @@
           
           <tcs:SignInformation>
             <@tcs attribute="IccardNo" value=enterprise.icCardNo />
-            <tcs:Name>管理员</tcs:Name>
+            <@tcs attribute="Name" value=customsDeclarationHead.declarant />
             <@tcs attribute="OrganizationCode" value=enterprise.ownerCode />
             <tcs:SignInformation>A001</tcs:SignInformation>
             <@tcs attribute="SignDate" value=SignDate />

@@ -405,6 +405,7 @@ public class EnterprisePanel extends MyLayoutContainer {
 		right.add(userPrivateKey);
 		
 		TextField<String> icCardNo = new TextField<String>();
+		icCardNo.setAllowBlank(false);
 		icCardNo.setName("icCardNo");
 		icCardNo.setFieldLabel("IC卡号");
 		right.add(icCardNo);

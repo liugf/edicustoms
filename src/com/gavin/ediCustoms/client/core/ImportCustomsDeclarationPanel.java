@@ -385,6 +385,7 @@ public class ImportCustomsDeclarationPanel extends CustomsDeclarationPanel {
 		
 		
 		TextField<String> declarant = new TextField<String>();
+		declarant.setAllowBlank(false);
 		declarant.setTabIndex(31);
 		declarant.setName("declarant");
 		declarant.setFieldLabel("报关员");
