@@ -33,7 +33,8 @@
 		<button type="button" onclick="javascript:$('#toolbar').hide();preview(false);window.print();">套打</button>
 		&nbsp;
 		<button type="button" onclick="javascript:window.open('customsDeclarationDraft.do?id=${customsDeclarationHead.id!""}');">打印草稿</button>
-	</div>
+	</div>	
+	
 	
 	<#assign goodsCount = customsDeclarationGoods?size />
 	<#if goodsCount!=0 >
@@ -57,10 +58,10 @@
 	</#if>
 	
 	
-	
+	<div style="width:100%;height:35px;"></div>
 	
 	<div class="frame">
-		<div style="width:100%;height:70px;">
+		<div style="width:100%;height:45px;">
 		<#if customsDeclarationHead.electronicPort?? && customsDeclarationHead.electronicPort?trim != "">
 			<div id='barcode1'><img src="barcode?msg=${customsDeclarationHead.electronicPort!""}&height=7&mw=0.15" alt="barcode" width="310" height="41" /></div>
 		</#if>
@@ -247,8 +248,10 @@
 	<#if  pages?size!=pageNum_index+1 >
 	<div style="page-break-before: always;">
 	   <!--[if IE 7]><br style="height:0; line-height:0"><![endif]-->
-	</div>
-	<div style="width:100%;height:35px;"></div>
+	</div>	
+	<!-- 
+		<div style="width:100%;height:35px;"></div>
+	 -->
 	</#if>
 	
 	</#list>
