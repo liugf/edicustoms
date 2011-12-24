@@ -104,7 +104,7 @@
 						<#list customsDeclarationGoods[0..listlen-1] as customsDeclarationGood>	
 							<div class="tr">
 		                		<div class="td" style="width:90px;"><span class="content">${customsDeclarationGood.no!""}</span></div>
-		                        <div class="td" style="width:202px;"><span class="content">${customsDeclarationGood.name!""}<#if (customsDeclarationGood.shenbaoguifan?? && customsDeclarationGood.shenbaoguifan!="")>/</#if>${customsDeclarationGood.shenbaoguifan!""}</span></div>
+		                        <div class="td" style="width:202px;"><span class="content">${customsDeclarationGood.name!""}</div>
 		                        <div class="td" style="width:48px;"><span class="content">${customsDeclarationGood.declareUnit!""}</span></div>
 		                        <div class="td" style="width:90px;"><span class="content">${customsDeclarationGood.quantity?string("0.###")}</span></div>
 		                        <div class="td" style="width:70px;"><span class="content">#{customsDeclarationGood.declarePrice!"";m2M2}</span></div>
@@ -134,7 +134,7 @@
                 	</div>
                 	<div class="tr last-tr" style="height:27px; ">
                 		<div class="td" style="width:90px;">备注<span class="en-font">Notes</span></div>
-                		<div class="td last-td" style="width:515px;"><span class="content">${note[0]!""}</span></div>                                             
+                		<div class="td last-td" style="width:515px;"><span class="content">${dealMode[0]!""}${dealModeAddress[0]!""} &nbsp;${note[0]!""}</span></div>                                             
                 	</div>
                 	
                 	

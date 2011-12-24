@@ -530,7 +530,15 @@ public class ImportPrintTabItem extends MyTabItem implements CustomsDeclarationP
 
 				getDictionaryService().getDistrict((String)be.getSelectedItem().get("ownerDistrict"), ownerDistrictCallback);
 				getDictionaryService().getPort((String)be.getSelectedItem().get("destinationPort"), destinationPortCallback);
-				getBusinessService().getContractHead((Long)be.getSelectedItem().get("contractHeadId"), contractHeadCallback);
+				
+				if (be.getSelectedItem().get("contractHeadId")!=null) {
+					contractNo.setValue((String)be.getSelectedItem().get("contractNo"));
+					getBusinessService().getContractHead((Long)be.getSelectedItem().get("contractHeadId"), contractHeadCallback);
+				}else {
+					exportDeadline.setValue(new Date());
+					importDeadline.setValue(new Date());
+				}
+				
 				getDictionaryService().getTradeMode((String)be.getSelectedItem().get("tradeMode"), tradeModeCallback);
 				//getDictionaryService().getPayWay(be.getSelectedItem().get("payWay").toString(), payWayCallback);
 				getDictionaryService().getWrapType((String)be.getSelectedItem().get("wrapType"), wrapTypeCallback);

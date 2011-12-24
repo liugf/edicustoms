@@ -243,6 +243,7 @@ public class InvoiceController {
 		Enterprise enterprise = enterpriseDao.get(customsDeclarationHead
 				.getOwnerId());
 
+		paramsWrap1.getEnterprise().setTradeCode(enterprise.getTradeCode());
 		paramsWrap1.getEnterprise().setBank(enterprise.getBank());
 		paramsWrap1.getEnterprise().setBankAccount(enterprise.getBankAccount());
 

@@ -65,7 +65,7 @@
 <div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;">${foreignEnterprise.registeName!""}</div>
 <div class="td" style="height: 20px; width: 92px;"></div>
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">海关编号：</span></div>
-<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;">${customsDeclarationHead.entryId!""}</div>
+<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;">${enterprise.tradeCode!""}</div>
 </div>
 <div class="tr" style="height: 20px; margin-top: 10px;">
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText"><#if customsDeclarationHead.isExport>发货单位：<#else>收货单位：</#if></span></div>
@@ -106,8 +106,8 @@
 
 <div class="tr header" style="margin-top: -1px; ">
 <div class="td" style="width: 40px;"><span class="bgText">序<br/><br/>号</span></div>
-<div class="td" style="width: 179px;"><span class="bgText">海　关　统　计　商　品　编　　　号</span></div>
-<div class="td" style="width: 180px;"><span class="bgText"><br/>货名规格及货号</span></div>
+<div class="td" style="width: 130px;"><span class="bgText">海　关　统　计　商　品　编　号</span></div>
+<div class="td" style="width: 229px;"><span class="bgText"><br/>货名规格及货号</span></div>
 <div class="td" style="width: 150px; padding: 0;">
 <div class="tr" style="padding:3px; height:20px; border-bottom: solid 1px;">数量</div>
 <div class="tr" style="height:39px;">
@@ -118,15 +118,15 @@
 <div class="td last-td" style="width: 150px; padding: 0;">
 <div class="tr" style="padding:3px; height:20px; border-bottom: solid 1px;">成交价格</div>
 <div class="tr" style="height:39px;">
-<div class="td" style="width: 70px; height:39px; padding-top:3px;">单价<br/>(港币)</div>
-<div class="td" style="width: 79px; height:39px;padding-top:3px; border: none;">总价<br/>(港币)</div>
+<div class="td" style="width: 70px; height:39px; padding-top:3px;">单价<br/>(${customsDeclarationGoods[0].currency!""})</div>
+<div class="td" style="width: 79px; height:39px;padding-top:3px; border: none;">总价<br/>(${customsDeclarationGoods[0].currency!""})</div>
 </div>
 </div>
 </div>
 
 <div class="table" style=" margin-top: -1px; border-bottom:none;">
-<#if (customsDeclarationGoods?size>23)> 
-	<#assign listlen=23> 
+<#if (customsDeclarationGoods?size>20)> 
+	<#assign listlen=20> 
 <#else>
 	<#assign listlen=customsDeclarationGoods?size> 
 </#if> 
@@ -134,8 +134,8 @@
 <#list customsDeclarationGoods[0..listlen-1] as customsDeclarationGood>
 <div class="tr">
 <div class="td" style="width: 40px;">${customsDeclarationGood.no!""}</div>
-<div class="td" style="width: 179px;">${customsDeclarationGood.codeTS!""}</div>
-<div class="td" style="width: 180px;">${customsDeclarationGood.name!""}</div>
+<div class="td" style="width: 130px;">${customsDeclarationGood.codeTS!""}</div>
+<div class="td" style="width: 229px; text-align:left;">${customsDeclarationGood.name!""}</div>
 <div class="td" style="width: 100px;">${customsDeclarationGood.quantity?string("0.###")!""}</div>
 <div class="td" style="width: 50px;">${customsDeclarationGood.declareUnit!""}</div>
 <div class="td" style="width: 70px;">${customsDeclarationGood.declarePrice?string("0.00")!""}</div>
@@ -143,11 +143,11 @@
 </div>
 </#list> 
 </#if>
-<#if (listlen<23)> <#list 1..23-listlen as a>
+<#if (listlen<20)> <#list 1..20-listlen as a>
 <div class="tr">
 <div class="td" style="width: 40px;"></div>
-<div class="td" style="width: 179px;"></div>
-<div class="td" style="width: 180px;"></div>
+<div class="td" style="width: 130px;"></div>
+<div class="td" style="width: 229px;"></div>
 <div class="td" style="width: 100px;"></div>
 <div class="td" style="width: 50px;"></div>
 <div class="td" style="width: 70px;"></div>
@@ -158,8 +158,8 @@
 
 <div class="tr">
 <div class="td" style="width: 40px;"></div>
-<div class="td" style="width: 179px;"></div>
-<div class="td" style="width: 180px;"></div>
+<div class="td" style="width: 130px;"></div>
+<div class="td" style="width: 229px;"></div>
 <div class="td" style="width: 100px;"></div>
 <div class="td" style="width: 50px;"></div>
 <div class="td" style="width: 70px;">合计</div>

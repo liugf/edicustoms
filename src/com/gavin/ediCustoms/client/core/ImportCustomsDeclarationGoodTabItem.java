@@ -196,6 +196,10 @@ public class ImportCustomsDeclarationGoodTabItem extends MyTabItem implements Cu
 		addButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
 			@Override
 			public void componentSelected(ButtonEvent ce) {
+				if (store.getModels().size() >= 20) {
+					MessageBox.alert("提示", "不能超过20项", null);
+					return;
+				}
 				//查找最大no
 				Integer maxNo=0;
 				for(BeanModel bm:store.getModels()){

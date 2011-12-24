@@ -75,7 +75,7 @@ PACKING LIST</h1>
 <#if (packingItems?size>0)>
 <#list packingItems[0..listlen-1] as packingItem>
 <div class="tr">
-<div class="td editable" style="width: 241px;">${packingItem.name!""}</div>
+<div class="td editable" style="width: 241px; text-align:left;">${packingItem.name!""}</div>
 <div class="td editable" style="width: 59px;">${packingItem.wrapNo!""}</div>
 <div class="td editable" style="width: 79px;">${packingItem.packNo!""}</div>
 <div class="td editable" style="width: 79px;">${packingItem.quantity?string("0.###")!""}${packingItem.declareUnit!""}</div>

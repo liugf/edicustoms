@@ -75,7 +75,7 @@ PACKING LIST</h1>
 <#list packingItems[0..listlen-1] as packingItem>
 <div class="tr">
 <div class="td" style="width: 110px;">${packingItem.clientNo!""}</div>
-<div class="td" style="width: 251px;">${packingItem.name!""}</div>
+<div class="td" style="width: 251px; text-align:left;">${packingItem.name!""}</div>
 <div class="td" style="width: 59px;">${packingItem.wrapNo!""}</div>
 <div class="td" style="width: 79px;">${packingItem.packNo!""}</div>
 <div class="td" style="width: 79px;">${packingItem.quantity?string("0.###")!""}${packingItem.declareUnit!""}</div>
