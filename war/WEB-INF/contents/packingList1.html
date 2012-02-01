@@ -2,32 +2,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>装箱单打印</title>
-<link type="text/css" href="invoice1.css" rel="stylesheet">
+<link type="text/css" href="print.css" rel="stylesheet">
 <script type="text/javascript" src="../jquery.min.js"></script>
-<script type="text/javascript" src="../editor.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		window.onafterprint=function(){$('#toolbar').show();}
-	});
-	function preview(isPreview) {
-		if (isPreview) {
-			$("div").css("border-color", "#000000");
-			$("div").css("color", "#000000");
-		} else {
-			$("#frame div").css("border-color", "#ffffff");
-			$("div").css("color", "#ffffff");
-			$(".content").css("color", "#000000");
-			$("#toorbar").css("color", "#000000");
-		}
-	}
-</script>
+<script type="text/javascript" src="../print.js"></script>
+
+<style type="text/css">
+h1 {
+	font-family: "STFangsong";
+	font-size: 26px;
+	font-weight: normal;
+}
+
+.bgText{
+	font-size: 14;
+}
+
+.table {
+	border: 1px solid;
+}
+
+.bold-value {
+	padding-top: 5px;
+	height: 25px;
+	text-align: center;
+	font-size: 16px;
+	border-bottom: 2px solid;
+}
+</style>
 
 </head>
 <body>
-<div id="toolbar">
-<button type="button"
-	onclick="javascript:$('#toolbar').hide();preview(true);window.print();">打印</button>
-</div>
 <div id="frame">
 <div style="width: 100%; height: 80px;"></div>
 <div class="tr" style="text-align: center; height: 50px;">
@@ -37,28 +41,27 @@ PACKING LIST</h1>
 <div class="tr" style="height: 20px;">
 <div class="td" style="height: 20px; width: 481px;"></div>
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">发票号码：</span></div>
-<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;">${(invoiceNo[0])!""}</div>
+<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${(invoiceNo[0])!""}</span></div>
 </div>
 <div class="tr" style="height: 20px; margin-top: 10px;">
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">商　　号：</span></div>
-<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;">${foreignEnterprise.registeName!""}</div>
+<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;"><span class="content">${foreignEnterprise.registeName!""}</span></div>
 <div class="td" style="height: 20px; width: 92px;"></div>
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">合同号码：</span></div>
-<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;">${contractNo[0]!""}</div>
+<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${contractNo[0]!""}</span></div>
 </div>
 <div class="tr" style="height: 20px; margin-top: 10px;">
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText"><#if customsDeclarationHead.isExport>发货单位：<#else>收货单位：</#if></span></div>
-<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;">${enterprise.registeName!""}</div>
+<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;"><span class="content">${enterprise.registeName!""}</span></div>
 <div class="td" style="height: 20px; width: 92px;"></div>
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">日　　期：</span></div>
-<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;">${(dateTime?string("yyyy年MM月dd日"))!""}</div>
+<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${(dateTime?string("yyyy年MM月dd日"))!""}</span></div>
 </div>
 <div class="clear"></div>
 
 <div class="table" style=" margin-top: 10px; border-left: none; border-right: none;border-bottom: none; ">
 <div class="tr header" style="border-bottom: 1px solid;">
-<div class="td header" style="width: 110px;"><span class="bgText">客户编号</span></div>
-<div class="td header" style="width: 251px;"><span class="bgText">商品名称/规格型号</span></div>
+<div class="td header" style="width: 361px;"><span class="bgText">商品名称/规格型号</span></div>
 <div class="td header" style="width: 59px;"><span class="bgText">件数</span></div>
 <div class="td header" style="width: 79px;"><span class="bgText">箱数</span></div>
 <div class="td header" style="width: 79px;"><span class="bgText">数量</span></div>
@@ -74,20 +77,18 @@ PACKING LIST</h1>
 <#if (packingItems?size>0)>
 <#list packingItems[0..listlen-1] as packingItem>
 <div class="tr">
-<div class="td" style="width: 110px;">${packingItem.clientNo!""}</div>
-<div class="td" style="width: 251px; text-align:left;">${packingItem.name!""}</div>
-<div class="td" style="width: 59px;">${packingItem.wrapNo!""}</div>
-<div class="td" style="width: 79px;">${packingItem.packNo!""}</div>
-<div class="td" style="width: 79px;">${packingItem.quantity?string("0.###")!""}${packingItem.declareUnit!""}</div>
-<div class="td" style="width: 59px;">${packingItem.netWeight?string("0.###")!""}</div>
-<div class="td last-td" style="width: 60px;">${packingItem.grossWeight?string("0.###")!""}</div>
+<div class="td" style="width: 361px; text-align:left;"><span class="content">${packingItem.name!""}</span></div>
+<div class="td" style="width: 59px;"><span class="content">${packingItem.wrapNo!""}</span></div>
+<div class="td" style="width: 79px;"><span class="content">${packingItem.packNo!""}</span></div>
+<div class="td" style="width: 79px;"><span class="content">${packingItem.quantity?string("0.###")!""}${packingItem.declareUnit!""}</span></div>
+<div class="td" style="width: 59px;"><span class="content">${packingItem.netWeight?string("0.###")!""}</span></div>
+<div class="td last-td" style="width: 60px;"><span class="content">${packingItem.grossWeight?string("0.###")!""}</span></div>
 </div>
 </#list> 
 </#if>
 <#if (listlen<23)> <#list 1..23-listlen as a>
 <div class="tr">
-<div class="td" style="width: 110px;"></div>
-<div class="td" style="width: 251px;"></div>
+<div class="td" style="width: 361px;"></div>
 <div class="td" style="width: 59px;"></div>
 <div class="td" style="width: 79px;"></div>
 <div class="td" style="width: 79px;"></div>
@@ -99,19 +100,17 @@ PACKING LIST</h1>
 
 <#if (packingItems?size>0)>
 <div class="tr">
-<div class="td" style="width: 110px;"></div>
-<div class="td" style="width: 251px;"></div>
-<div class="td editable" style="width: 59px;">${totleWrapNo!""}</div>
-<div class="td editable" style="width: 79px;">${totlePackNo!""}</div>
+<div class="td" style="width: 361px;"></div>
+<div class="td editable" style="width: 59px;"><span class="content">${totleWrapNo!""}</span></div>
+<div class="td editable" style="width: 79px;"><span class="content">${totlePackNo!""}</span></div>
 <div class="td" style="width: 79px;"></div>
-<div class="td editable" style="width: 59px;">${totleNetWeight?string("0.###")!""}</div>
-<div class="td editable last-td" style="width: 60px;">${totleGrossWeight?string("0.###")!""}</div>
+<div class="td editable" style="width: 59px;"><span class="content">${totleNetWeight?string("0.###")!""}</span></div>
+<div class="td editable last-td" style="width: 60px;"><span class="content">${totleGrossWeight?string("0.###")!""}</span></div>
 </div>
 </#if>
 
 </div>
 
-<div style="margin: 10px 0 0 10px;"><span class="bgText">唛头:　</span>${shipingMark[0]!""}</div>
 
 </div>
 

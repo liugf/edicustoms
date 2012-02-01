@@ -3,168 +3,323 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>发票打印</title>
-<link type="text/css" href="/invoice2.css" rel="stylesheet">
+<link type="text/css" href="print.css" rel="stylesheet">
 <script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../print.js"></script>
 <script type="text/javascript" src="../no.js"></script>
-<script type="text/javascript">
-		$(document).ready(function() {
-			window.onafterprint=function(){$('#toolbar').show();}
-		});
-        function preview(isPreview){
-                if(isPreview){
-                        $("div").css("border-color","#000000");
-                        $("div").css("color","#000000");
-                }else{
-                        $("#frame div").css("border-color","#ffffff");
-                        $("div").css("color","#ffffff");
-                        $(".content").css("color","#000000");
-                        $("#toorbar").css("color","#000000");
-                }               
-        }
-</script>
 
+<style type="text/css">
+body {
+	margin: 0;
+	font-family: "KaiTi_GB2312";
+	font-size: 12px;
+	text-align: center;
+}
+
+.en-font {
+	font-family: "Times New Roman";
+	font-size: 12px;
+}
+
+#toolbar {
+	width: 100%;
+	height: 40px;
+	padding-top: 10px;
+	text-align: center;
+	background-color: #a19b9b;
+	border-bottom: 1px solid #737070;
+}
+
+.clear {
+	clear: both;
+}
+
+#frame {
+	margin: 0 auto;
+	width: 610px;
+	height: 700px;
+	text-align: left;
+	margin: 0 auto;
+}
+
+#title {
+	margin-left: 35px;
+	margin-left: 33px\9;
+	padding-top: 26px;
+	padding-top: 28px\9;
+	text-align: center;
+	height: 45px;
+	height: 60px\9;
+	width: 400px;
+	float: left;
+}
+
+.title_cn {
+	font-family: "KaiTi_GB2312";
+	font-size: 23px;
+	font-weight: normal;
+	letter-spacing: 6px;
+}
+
+.title_en {
+	font-family: "Times New Roman";
+	font-size: 17px;
+	font-weight: normal;
+}
+
+#top-export {
+	width: 90px;
+	height: 30px;
+	height: 25px !important;
+	border: 1px solid;
+	float: left;
+	margin-top: 42px;
+	margin-left: 62px;
+	margin-top: 45px\9;
+	margin-left: 65px\9;
+	font-family: "SimHei";
+	font-size: 18px;
+	font-weight: normal;
+	text-align: center;
+	padding-top: 5px;
+}
+
+.content {
+	overflow: hidden;
+	font-size: 14px;
+	font-family: "SimSun";
+}
+
+.table {
+	border: 1px solid;
+}
+
+.tr {
+	float: none;
+	height: 30px;
+	width: 100%;
+}
+
+.td {
+	float: left;
+	height: 30px;
+	overflow: hidden;
+}
+
+.table .tr {
+	height: 37px;
+	border-bottom: 1px solid;
+	line-height: 12px;
+	overflow: hidden;
+}
+
+.table .td {
+	border-right: 1px solid;
+	height: 37px;
+	text-align: center;
+}
+
+.table .content { .
+	line-height: 14px;
+}
+
+.table .last-tr {
+	border-bottom: none;
+}
+
+.table .last-td {
+	border-right: none;
+}
+
+#goodlist-items {
+	height: 505px;
+	overflow: hidden;
+}
+
+#goodlist-items .tr {
+	height: 20px;
+	line-height: 14px;
+	border-bottom: none;
+}
+
+#goodlist-items .td {
+	height: 20px;
+}
+
+#footer .tr {
+	height: 20px;
+}
+
+#footer .td {
+	height: 20px;
+}
+</style>
 </head>
 <body>
-        <div id="toolbar">
-                <button type="button" onclick="javascript:preview(true);">打印预览</button>
-                <button type="button" onclick="javascript:$('#toolbar').hide();preview(true);window.print();">打印</button>
-                &nbsp;
-                <button type="button" onclick="javascript:preview(false);">套打预览</button>
-                <button type="button" onclick="javascript:$('#toolbar').hide();preview(false);window.print();">套打</button>
-        </div>
-        <div id="frame">
-        		<div style="width: 100%; height: 20px;"></div>
-                <div id="title">
-                	<span class="title_cn">广东省出口商品统一发票</span><br/>
-                	<span class="title_en">Guangdong Province Export Goods Unify Invoice</span>
-                </div>                
-                <div id="top-export">
-                	出口专用
-                </div>
-                <div class="clear"></div>
-                <div style="width:192px; height:22px;float:right;font-size: 14px;margin-top: 14px;margin-top: 16px\9;">发票代码</div>  
-                <div class="clear"></div>
-                <div style="width:192px; height:22px;float:right;font-size: 14px;margin-top: 4px;">发票号码:</div>              
-                <div class="clear"></div>  
-                <div class="tr" style="margin-top:-12px;">
-                        <div class="td" style="width:73px;">购货单位:<br/><span class="en-font">Purchaser:</span></div>
-                        <div class="td" style="width:175px; line-height: 30px;"><span class="content">${foreignEnterprise.registeName!""}</span></div>                                        
-                </div>  
-                <div class="clear"></div>   
-                <div class="tr" style="margin-top:0px;margin-top:-3px;">
-                        <div class="td" style="width:53px;">地址:<br/><span class="en-font">Add:</span></div>
-                        <div class="td" style="width:205px;line-height: 30px;"><span class="content">${foreignEnterprise.address!""}</span></div>
-                        <div class="td" style="width:53px;">电话:<br/><span class="en-font">Tel:</span></div>
-                        <div class="td" style="width:120px;"><span class="content">${foreignEnterprise.telephone!""}</span></div> 
-                        <div class="td" style="width:65px;">开票日期:<br/><span class="en-font">Issued date:</span></div>
-                        <div class="td" style="width:43px;text-align: right;"><span class="content">${(dateTime?string("yyyy"))!""}</span>年<br/><span class="en-font">Year</span></div>
-                        <div class="td" style="width:38px;text-align: right;"><span class="content">${(dateTime?string("MM"))!""}</span>月<br/><span class="en-font">Month</span></div> 
-                        <div class="td" style="width:31px;text-align: right;"><span class="content">${(dateTime?string("dd"))!""}</span>日<br/><span class="en-font">Date</span></div>                                        
-                </div>   
-                
-                <div class="table">
-                	<div class="tr">
-                		<div class="td" style="width:107px;">合同号码<br/><span class="en-font">Contract No</span></div>
-                        <div class="td" style="width:147px;"><span class="content">${(contractNo[0])!""}</span></div>
-                        <div class="td" style="width:86px;">贸易方式<br/><span class="en-font">Trade Method</span></div>
-                        <div class="td" style="width:90px;"><span class="content">${tradeMode[0]!""}</span></div>
-                        <div class="td" style="width:86px;">收汇方式<br/><span class="en-font">Foreign Exchange<br/>Collection Form</span></div>
-                        <div class="td last-td" style="width:87px;"><span class="content">${payWay[0]!""}</span></div>
-                	</div>
-                	<div class="tr">
-                		<div class="td" style="width:107px;">开户银行及账号<br/><span class="en-font">Bank where account<br/>opened&A/C Number</span></div>
-                        <div class="td" style="width:147px;"><span class="content">${enterprise.bank!""}<br/>${enterprise.bankAccount!""}</span></div>
-                        <div class="td" style="width:86px;">发运港<br/><span class="en-font">Port of Departure</span></div>
-                        <div class="td" style="width:90px;"><span class="content">${(iePort[0])!""}</span></div>
-                        <div class="td" style="width:86px;">转运港<br/><span class="en-font">Port of<br/>Transshipment</span></div>
-                        <div class="td last-td" style="width:87px;"><span class="content">${(transhipPort[0])!""}</span></div>
-                	</div>
-                	<div class="tr">
-                		<div class="td" style="width:107px;">信用证号<br/><span class="en-font">I./C No.</span></div>
-                        <div class="td" style="width:147px;"><span class="content">${creditNo[0]!""}</span></div>
-                        <div class="td" style="width:86px;">运输工具<br/><span class="en-font">Means of<br/>Transportation</span></div>
-                        <div class="td" style="width:90px;"><span class="content">${transportTool[0]!""}</span></div>
-                        <div class="td" style="width:86px;">目的港<br/><span class="en-font">Port of Destination</span></div>
-                        <div class="td last-td" style="width:87px;"><span class="content">${(destinationPort[0])!""}</span></div>
-                	</div>
-                	<div class="tr" style="height:27px">
-                		<div class="td" style="width:90px;">订单号码<br/><span class="en-font">P.O.No.</span></div>
-                        <div class="td" style="width:202px;">品&nbsp;名&nbsp;规&nbsp;格<br/><span class="en-font">Description and Specification of Goods</span></div>
-                        <div class="td" style="width:48px;">单位<br/><span class="en-font">Unit</span></div>
-                        <div class="td" style="width:90px;">数量<br/><span class="en-font">Quantity</span></div>
-                        <div class="td" style="width:70px;">销售单价<br/><span class="en-font">Unit Price</span></div>
-                        <div class="td last-td" style="width:103px;">销售总额<br/><span class="en-font">Total Sales Amount</span></div>
-                	</div>
-                	<div id="goodlist-items">                		
-	                	<#if (customsDeclarationGoods?size>20)>
-							<#assign listlen=26>
-						<#else>
-							<#assign listlen=customsDeclarationGoods?size>
-						</#if>
-						<#list customsDeclarationGoods[0..listlen-1] as customsDeclarationGood>	
-							<div class="tr">
-		                		<div class="td" style="width:90px;"><span class="content">${customsDeclarationGood.no!""}</span></div>
-		                        <div class="td" style="width:202px;"><span class="content">${customsDeclarationGood.name!""}</div>
-		                        <div class="td" style="width:48px;"><span class="content">${customsDeclarationGood.declareUnit!""}</span></div>
-		                        <div class="td" style="width:90px;"><span class="content">${customsDeclarationGood.quantity?string("0.###")}</span></div>
-		                        <div class="td" style="width:70px;"><span class="content">#{customsDeclarationGood.declarePrice!"";m2M2}</span></div>
-		                        <div class="td last-td" style="width:103px;"><span class="content">#{customsDeclarationGood.totalPrice!"";m2M2}</span></div>
-		                	</div>
-						</#list>
-							
-						<#if (listlen<26)>
-							<#list 1..26-listlen as a>
-							<div class="tr">
-		                		<div class="td" style="width:90px;"></div>
-		                        <div class="td" style="width:202px;"></div>
-		                        <div class="td" style="width:48px;"></div>
-		                        <div class="td" style="width:90px;"></div>
-		                        <div class="td" style="width:70px;"></div>
-		                        <div class="td last-td" style="width:103px;"></div>
-		                	</div>
-							</#list>	
-						</#if>	
-                	</div>                	
-                	
-                	<div class="tr" style="height:27px;border-top: 1px solid; ">
-                		<div class="td" style="width:142px; text-align: left;">合计金额大写(币种:<span class="content">${customsDeclarationGoods[0].currency!""}</span>)<br/><span class="en-font">Total Amount Currency</span></div>
-                        <div class="td" style="width:290px;width:288px\9;"><span class="content"><script type="text/javascript">document.write(ToCn(${totalPrice!""}));</script></span></div>
-                        <div class="td" style="width:70px;">(小写)<br/><span class="en-font">Total Amount</span></div>
-                        <div class="td last-td" style="width:103px;"><span class="content">#{totalPrice!"";m2M2}</span></div>                        
-                	</div>
-                	<div class="tr last-tr" style="height:27px; ">
-                		<div class="td" style="width:90px;">备注<span class="en-font">Notes</span></div>
-                		<div class="td last-td" style="width:515px;"><span class="content">${dealMode[0]!""}${dealModeAddress[0]!""} &nbsp;${note[0]!""}</span></div>                                             
-                	</div>
-                	
-                	
-                </div>
-                
-                
-                
-                <div id="footer">
-	                <div class="tr" style="margin-top:5px;height:14px;">
-	                      <div class="td" style="width:110px; ">销货单位(盖章):</div>
-	                      <div class="td" style="width:490px;"><span class="content">${enterprise.registeName!""}</span></div>                                                              
-	              	</div> 
-	              	<div class="tr" style="margin-top:0px;">
-	                      <div class="td" style="width:50px; ">地址:</div>
-	                      <div class="td" style="width:550px;"><span class="content">${enterprise.address!""}</span></div>   
-	                                                                                
-	              	</div>
-	              	<div class="tr" style="margin-top:0px;">
-	                      <div class="td" style="width:110px; ">电话:</div>
-	                      <div class="td" style="width:190px;"><span class="content">${enterprise.telephone!""}</span></div>   
-	                      <div class="td" style="width:110px; ">Tel:</div>
-	                      <div class="td" style="width:190px;"><span class="content"></span></div>                                                            
-	              	</div>
-	              	<div class="tr" style="margin-top:0px;">
-	                      <div class="td" style="width:110px; ">传真:</div>
-	                      <div class="td" style="width:190px;"><span class="content">${enterprise.fax!""}</span></div>   
-	                      <div class="td" style="width:110px; ">Fax:</div>
-	                      <div class="td" style="width:190px;"><span class="content"></span></div>                                                            
-	              	</div>   
-                </div>
-        </div>
+<div id="frame">
+<div style="width: 100%; height: 20px;"></div>
+<div id="title"><span class="title_cn">广东省出口商品统一发票</span><br />
+<span class="title_en">Guangdong Province Export Goods Unify
+Invoice</span></div>
+<div id="top-export">出口专用</div>
+<div class="clear"></div>
+<div
+	style="width: 192px; height: 22px; float: right; font-size: 14px; margin-top: 14px; margin-top: 16px\9;">发票代码</div>
+<div class="clear"></div>
+<div
+	style="width: 192px; height: 22px; float: right; font-size: 14px; margin-top: 4px;">发票号码:</div>
+<div class="clear"></div>
+<div class="tr" style="margin-top: -12px;">
+<div class="td" style="width: 73px;">购货单位:<br />
+<span class="en-font">Purchaser:</span></div>
+<div class="td" style="width: 175px; line-height: 30px;"><span
+	class="content">${foreignEnterprise.registeName!""}</span></div>
+</div>
+<div class="clear"></div>
+<div class="tr" style="margin-top: 0px; margin-top: -3px;">
+<div class="td" style="width: 53px;">地址:<br />
+<span class="en-font">Add:</span></div>
+<div class="td" style="width: 205px; line-height: 30px;"><span
+	class="content">${foreignEnterprise.address!""}</span></div>
+<div class="td" style="width: 53px;">电话:<br />
+<span class="en-font">Tel:</span></div>
+<div class="td" style="width: 120px;"><span class="content">${foreignEnterprise.telephone!""}</span></div>
+<div class="td" style="width: 65px;">开票日期:<br />
+<span class="en-font">Issued date:</span></div>
+<div class="td" style="width: 43px; text-align: right;"><span
+	class="content">${(dateTime?string("yyyy"))!""}</span>年<br />
+<span class="en-font">Year</span></div>
+<div class="td" style="width: 38px; text-align: right;"><span
+	class="content">${(dateTime?string("MM"))!""}</span>月<br />
+<span class="en-font">Month</span></div>
+<div class="td" style="width: 31px; text-align: right;"><span
+	class="content">${(dateTime?string("dd"))!""}</span>日<br />
+<span class="en-font">Date</span></div>
+</div>
+
+<div class="table">
+<div class="tr">
+<div class="td" style="width: 107px;">合同号码<br />
+<span class="en-font">Contract No</span></div>
+<div class="td" style="width: 147px;"><span class="content">${(contractNo[0])!""}</span></div>
+<div class="td" style="width: 86px;">贸易方式<br />
+<span class="en-font">Trade Method</span></div>
+<div class="td" style="width: 90px;"><span class="content">${tradeMode[0]!""}</span></div>
+<div class="td" style="width: 86px;">收汇方式<br />
+<span class="en-font">Foreign Exchange<br />
+Collection Form</span></div>
+<div class="td last-td" style="width: 87px;"><span class="content">${payWay[0]!""}</span></div>
+</div>
+<div class="tr">
+<div class="td" style="width: 107px;">开户银行及账号<br />
+<span class="en-font">Bank where account<br />
+opened&A/C Number</span></div>
+<div class="td" style="width: 147px;"><span class="content">${enterprise.bank!""}<br />
+${enterprise.bankAccount!""}</span></div>
+<div class="td" style="width: 86px;">发运港<br />
+<span class="en-font">Port of Departure</span></div>
+<div class="td" style="width: 90px;"><span class="content">${(customsDeclarationHead.iePort)!""}</span></div>
+<div class="td" style="width: 86px;">转运港<br />
+<span class="en-font">Port of<br />
+Transshipment</span></div>
+<div class="td last-td" style="width: 87px;"><span class="content">${(transhipPort[0])!""}</span></div>
+</div>
+<div class="tr">
+<div class="td" style="width: 107px;">信用证号<br />
+<span class="en-font">I./C No.</span></div>
+<div class="td" style="width: 147px;"><span class="content">${creditNo[0]!""}</span></div>
+<div class="td" style="width: 86px;">运输工具<br />
+<span class="en-font">Means of<br />
+Transportation</span></div>
+<div class="td" style="width: 90px;"><span class="content">${transportTool[0]!""}</span></div>
+<div class="td" style="width: 86px;">目的港<br />
+<span class="en-font">Port of Destination</span></div>
+<div class="td last-td" style="width: 87px;"><span class="content">${(destinationPort[0])!""}</span></div>
+</div>
+<div class="tr" style="height: 27px">
+<div class="td" style="width: 90px;">订单号码<br />
+<span class="en-font">P.O.No.</span></div>
+<div class="td" style="width: 202px;">品&nbsp;名&nbsp;规&nbsp;格<br />
+<span class="en-font">Description and Specification of Goods</span></div>
+<div class="td" style="width: 48px;">单位<br />
+<span class="en-font">Unit</span></div>
+<div class="td" style="width: 90px;">数量<br />
+<span class="en-font">Quantity</span></div>
+<div class="td" style="width: 70px;">销售单价<br />
+<span class="en-font">Unit Price</span></div>
+<div class="td last-td" style="width: 103px;">销售总额<br />
+<span class="en-font">Total Sales Amount</span></div>
+</div>
+<div id="goodlist-items"><#if (customsDeclarationGoods?size>20)>
+<#assign listlen=26> <#else> <#assign
+listlen=customsDeclarationGoods?size> </#if> <#list
+customsDeclarationGoods[0..listlen-1] as customsDeclarationGood>
+<div class="tr">
+<div class="td" style="width: 90px;"><span class="content">${customsDeclarationGood.no!""}</span></div>
+<div class="td" style="width: 202px;"><span class="content">${customsDeclarationGood.name!""}</span></div>
+<div class="td" style="width: 48px;"><span class="content">${customsDeclarationGood.declareUnit!""}</span></div>
+<div class="td" style="width: 90px;"><span class="content">${customsDeclarationGood.quantity?string("0.###")}</span></div>
+<div class="td" style="width: 70px;"><span class="content">#{customsDeclarationGood.declarePrice!"";m2M2}</span></div>
+<div class="td last-td" style="width: 103px;"><span
+	class="content">#{customsDeclarationGood.totalPrice!"";m2M2}</span></div>
+</div>
+</#list> <#if (listlen<26)> <#list 1..26-listlen as a>
+<div class="tr">
+<div class="td" style="width: 90px;"></div>
+<div class="td" style="width: 202px;"></div>
+<div class="td" style="width: 48px;"></div>
+<div class="td" style="width: 90px;"></div>
+<div class="td" style="width: 70px;"></div>
+<div class="td last-td" style="width: 103px;"></div>
+</div>
+</#list> </#if></div>
+
+<div class="tr" style="height: 27px; border-top: 1px solid;">
+<div class="td" style="width: 142px; text-align: left;">合计金额大写(币种:<span
+	class="content">${customsDeclarationGoods[0].currency!""}</span>)<br />
+<span class="en-font">Total Amount Currency</span></div>
+<div class="td" style="width: 290px; width: 288px\9;"><span
+	class="content"><script type="text/javascript">document.write(ToCn(${totalPrice!""}));</script></span></div>
+<div class="td" style="width: 70px;">(小写)<br />
+<span class="en-font">Total Amount</span></div>
+<div class="td last-td" style="width: 103px;"><span
+	class="content">#{totalPrice!"";m2M2}</span></div>
+</div>
+<div class="tr last-tr" style="height: 27px;">
+<div class="td" style="width: 90px;">备注<span class="en-font">Notes</span></div>
+<div class="td last-td" style="width: 515px;"><span
+	class="content">${dealMode[0]!""}${dealModeAddress[0]!""}
+&nbsp;${note[0]!""}</span></div>
+</div>
+
+
+</div>
+
+
+
+<div id="footer">
+<div class="tr" style="margin-top: 5px; height: 14px;">
+<div class="td" style="width: 110px;">销货单位(盖章):</div>
+<div class="td" style="width: 490px;"><span class="content">${enterprise.registeName!""}</span></div>
+</div>
+<div class="tr" style="margin-top: 0px;">
+<div class="td" style="width: 50px;">地址:</div>
+<div class="td" style="width: 550px;"><span class="content">${enterprise.address!""}</span></div>
+
+</div>
+<div class="tr" style="margin-top: 0px;">
+<div class="td" style="width: 110px;">电话:</div>
+<div class="td" style="width: 190px;"><span class="content">${enterprise.telephone!""}</span></div>
+<div class="td" style="width: 110px;">Tel:</div>
+<div class="td" style="width: 190px;"><span class="content"></span></div>
+</div>
+<div class="tr" style="margin-top: 0px;">
+<div class="td" style="width: 110px;">传真:</div>
+<div class="td" style="width: 190px;"><span class="content">${enterprise.fax!""}</span></div>
+<div class="td" style="width: 110px;">Fax:</div>
+<div class="td" style="width: 190px;"><span class="content"></span></div>
+</div>
+</div>
+</div>
 </body>
 </html>

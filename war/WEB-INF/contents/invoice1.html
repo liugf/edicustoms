@@ -80,7 +80,7 @@ INVOICE</h1>
 <#if (customsDeclarationGoods?size>0)>
 <#list customsDeclarationGoods[0..listlen-1] as customsDeclarationGood>
 <div class="tr">
-<div class="td" style="width: 324px;"><span class="content">${customsDeclarationGood.name!""}</span></div>
+<div class="td" style="width: 324px; overflow:hidden;"><span class="content">${customsDeclarationGood.name!""}<#if customsDeclarationGood.shenbaoguifan?? >/${customsDeclarationGood.shenbaoguifan!""}</#if></span></div>
 <div class="td" style="width: 92px;"><span class="content">${customsDeclarationGood.quantity?string("0.###")!""}${customsDeclarationGood.declareUnit!""}</span></div>
 <div class="td" style="width: 90px;"><span class="content">#{customsDeclarationGood.declarePrice!"";m2M2}</span></div>
 <div class="td last-td" style="width: 125px;"><span class="content">#{customsDeclarationGood.totalPrice!"";m2M2}</span></div>

@@ -2,25 +2,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>进口货物装箱单打印</title>
-<link type="text/css" href="invoice1.css" rel="stylesheet">
+<link type="text/css" href="print.css" rel="stylesheet">
 <script type="text/javascript" src="../jquery.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		window.onafterprint=function(){$('#toolbar').show();}
-	});
-	function preview(isPreview) {
-		if (isPreview) {
-			$("div").css("border-color", "#000000");
-			$("div").css("color", "#000000");
-		} else {
-			$("#frame div").css("border-color", "#ffffff");
-			$("div").css("color", "#ffffff");
-			$(".content").css("color", "#000000");
-			$("#toorbar").css("color", "#000000");
-		}
-	}
-</script>
+<script type="text/javascript" src="../print.js"></script>
+
 <style type="text/css">
+h1 {
+	font-family: "STFangsong";
+	font-size: 26px;
+	font-weight: normal;
+}
+
+.bgText{
+	font-size: 14;
+}
+
+.table {
+	border: 1px solid;
+}
+
+.bold-value {
+	padding-top: 5px;
+	height: 25px;
+	text-align: center;
+	font-size: 16px;
+	border-bottom: 2px solid;
+}
 .header{
 	border: solid 1px;
 	height:60px;
@@ -32,7 +39,6 @@
 	height: 60px;
 	padding: 5px 5px 5px 5px;
 }
-
 .header .last-td{
 	border-right:none;
 	height: 60px;
@@ -47,14 +53,11 @@
 .table .td{
 	overflow: hidden;
 }
+
 </style>
 
 </head>
 <body>
-<div id="toolbar">
-<button type="button"
-	onclick="javascript:$('#toolbar').hide();preview(true);window.print();">打印</button>
-</div>
 <div id="frame">
 <div style="width: 100%; height: 30px;"></div>
 <div class="tr" style="text-align: center; height: 50px;">
@@ -63,52 +66,52 @@
 
 <div class="tr" style="height: 20px; margin-top: 10px;">
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">商　　号：</span></div>
-<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;">${foreignEnterprise.registeName!""}</div>
+<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;"><span class="content">${foreignEnterprise.registeName!""}</span></div>
 <div class="td" style="height: 20px; width: 92px;"></div>
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">海关编号：</span></div>
-<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;">${enterprise.tradeCode!""}</div>
+<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${enterprise.tradeCode!""}</span></div>
 </div>
 <div class="tr" style="height: 20px; margin-top: 10px;">
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText"><#if customsDeclarationHead.isExport>发货单位：<#else>收货单位：</#if></span></div>
-<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;">${enterprise.registeName!""}</div>
+<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;"><span class="content">${enterprise.registeName!""}</span></div>
 <div class="td" style="height: 20px; width: 92px;"></div>
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">手册编号：</span></div>
-<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;">${manualNo[0]!""}</div>
+<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${manualNo[0]!""}</span></div>
 </div>
 <div class="clear"></div>
 
 <div style="width:100%;height:100px; border: solid 1px; margin-top: 10px;">
 <div class="tr" style="height: 20px; margin-top: 10px;">
 <div class="td" style="height: 20px; width: 100px;"><span class="bgText">协议(合同)号：</span></div>
-<div class="td" style="height: 20px; width: 129px; border-bottom: 1px solid;">${contractNo[0]!""}</div>
+<div class="td" style="height: 20px; width: 129px; border-bottom: 1px solid;"><span class="content">${contractNo[0]!""}</span></div>
 <div class="td" style="height: 20px; width: 85px;"><span class="bgText">　运输单位：</span></div>
-<div class="td" style="height: 20px; width: 187px; border-bottom: 1px solid;">${(truck.corporationName)!""}</div>
+<div class="td" style="height: 20px; width: 187px; border-bottom: 1px solid;"><span class="content">${(truck.corporationName)!""}</span></div>
 <div class="td" style="height: 20px; width: 85px;"><span class="bgText">　国内车牌：</span></div>
-<div class="td" style="height: 20px; width: 111px; border-bottom: 1px solid;">${(truck.truckNo)!""}</div>
+<div class="td" style="height: 20px; width: 111px; border-bottom: 1px solid;"><span class="content">${(truck.truckNo)!""}</span></div>
 </div>
 <div class="tr" style="height: 20px; margin-top: 10px;">
 <div class="td" style="height: 20px; width: 100px;"><span class="bgText">起运国(地区)：</span></div>
-<div class="td" style="height: 20px; width: 289px; border-bottom: 1px solid;">${customsDeclarationHead.tradeCountry!""}</div>
+<div class="td" style="height: 20px; width: 289px; border-bottom: 1px solid;"><span class="content">${customsDeclarationHead.tradeCountry!""}</span></div>
 <div class="td" style="height: 20px; width: 92px;"></div>
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">司机姓名：</span></div>
-<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;">${(truck.driverName)!""}</div>
+<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${(truck.driverName)!""}</span></div>
 </div>
 <div class="tr" style="height: 20px; margin-top: 10px;">
 <div class="td" style="height: 20px; width: 50px;"><span class="bgText">件数：</span></div>
-<div class="td" style="height: 20px; width: 86px; border-bottom: 1px solid;">${customsDeclarationHead.packNo!""}</div>
+<div class="td" style="height: 20px; width: 86px; border-bottom: 1px solid;"><span class="content">${customsDeclarationHead.packNo!""}</span></div>
 <div class="td" style="height: 20px; width: 85px;"><span class="bgText">　包装种类：</span></div>
-<div class="td" style="height: 20px; width: 100px; border-bottom: 1px solid;">${customsDeclarationHead.wrapType!""}</div>
+<div class="td" style="height: 20px; width: 100px; border-bottom: 1px solid;"><span class="content">${customsDeclarationHead.wrapType!""}</span></div>
 <div class="td" style="height: 20px; width: 100px;"><span class="bgText">　毛重(公斤)：</span></div>
-<div class="td" style="height: 20px; width: 86px; border-bottom: 1px solid;">${customsDeclarationHead.grossWeight?string("0.###")!""}</div>
+<div class="td" style="height: 20px; width: 86px; border-bottom: 1px solid;"><span class="content">${customsDeclarationHead.grossWeight?string("0.###")!""}</span></div>
 <div class="td" style="height: 20px; width: 100px;"><span class="bgText">　净重(公斤)：</span></div>
-<div class="td" style="height: 20px; width: 86px; border-bottom: 1px solid;">${customsDeclarationHead.netWeight?string("0.###")!""}</div>
+<div class="td" style="height: 20px; width: 86px; border-bottom: 1px solid;"><span class="content">${customsDeclarationHead.netWeight?string("0.###")!""}</span></div>
 </div>
 </div>
 
 <div class="tr header" style="margin-top: -1px; ">
 <div class="td" style="width: 40px;"><span class="bgText">序<br/><br/>号</span></div>
-<div class="td" style="width: 100px;"><span class="bgText">海　关　统　计　商　品　编　　　号</span></div>
-<div class="td" style="width: 180px;"><span class="bgText"><br/>货名规格及货号</span></div>
+<div class="td" style="width: 80px;"><span class="bgText">海关统计商品编号</span></div>
+<div class="td" style="width: 200px;"><span class="bgText"><br/>货名规格及货号</span></div>
 <div class="td" style="width: 150px; padding: 0;">
 <div class="tr" style="padding:3px; height:20px; border-bottom: solid 1px;">数量</div>
 <div class="tr" style="height:39px;">
@@ -119,8 +122,8 @@
 <div class="td" style="width: 150px; padding: 0;">
 <div class="tr" style="padding:3px; height:20px; border-bottom: solid 1px;">成交价格</div>
 <div class="tr" style="height:39px;">
-<div class="td" style="width: 70px; height:39px; padding-top:3px;">单价<br/>(${customsDeclarationGoods[0].currency!""})</div>
-<div class="td" style="width: 79px; height:39px;padding-top:3px; border: none;">总价<br/>(${customsDeclarationGoods[0].currency!""})</div>
+<div class="td" style="width: 70px; height:39px; padding-top:3px;">单价<br/>(<span class="content">${customsDeclarationGoods[0].currency!""}</span>)</div>
+<div class="td" style="width: 79px; height:39px;padding-top:3px; border: none;">总价<br/>(<span class="content">${customsDeclarationGoods[0].currency!""}</span>)</div>
 </div>
 </div>
 <div class="td last-td" style="width: 79px;"><span class="bgText">原　产　国　别（地区）</span></div>
@@ -135,22 +138,22 @@
 <#if (customsDeclarationGoods?size>0)>
 <#list customsDeclarationGoods[0..listlen-1] as customsDeclarationGood>
 <div class="tr">
-<div class="td" style="width: 40px;">${customsDeclarationGood.no!""}</div>
-<div class="td" style="width: 100px;">${customsDeclarationGood.codeTS!""}</div>
-<div class="td" style="width: 180px; text-align:left;">${customsDeclarationGood.name!""}</div>
-<div class="td" style="width: 100px;">${customsDeclarationGood.quantity?string("0.###")!""}</div>
-<div class="td" style="width: 50px;">${customsDeclarationGood.declareUnit!""}</div>
-<div class="td" style="width: 70px;">${customsDeclarationGood.declarePrice?string("0.00")!""}</div>
-<div class="td" style="width: 80px;">${customsDeclarationGood.totalPrice?string("0.00")!""}</div>
-<div class="td last-td" style="width: 79px;">${customsDeclarationGood.originCountry!""}</div>
+<div class="td" style="width: 40px;"><span class="content">${customsDeclarationGood.no!""}</span></div>
+<div class="td" style="width: 80px;"><span class="content">${customsDeclarationGood.codeTS!""}</span></div>
+<div class="td" style="width: 200px; text-align:left;overflow:hidden;"><span class="content">${customsDeclarationGood.name!""}<#if customsDeclarationGood.shenbaoguifan?? >/${customsDeclarationGood.shenbaoguifan!""}</#if></span></div>
+<div class="td" style="width: 100px;"><span class="content">${customsDeclarationGood.quantity?string("0.###")!""}</span></div>
+<div class="td" style="width: 50px;"><span class="content">${customsDeclarationGood.declareUnit!""}</span></div>
+<div class="td" style="width: 70px;"><span class="content">${customsDeclarationGood.declarePrice?string("0.00")!""}</span></div>
+<div class="td" style="width: 80px;"><span class="content">${customsDeclarationGood.totalPrice?string("0.00")!""}</span></div>
+<div class="td last-td" style="width: 79px;"><span class="content">${customsDeclarationGood.originCountry!""}</span></div>
 </div>
 </#list> 
 </#if>
 <#if (listlen<20)> <#list 1..20-listlen as a>
 <div class="tr">
 <div class="td" style="width: 40px;"></div>
-<div class="td" style="width: 100px;"></div>
-<div class="td" style="width: 180px;"></div>
+<div class="td" style="width: 80px;"></div>
+<div class="td" style="width: 200px;"></div>
 <div class="td" style="width: 100px;"></div>
 <div class="td" style="width: 50px;"></div>
 <div class="td" style="width: 70px;"></div>
@@ -160,17 +163,27 @@
 </#list> 
 </#if>
 
+<div class="tr">
+<div class="td" style="width: 40px;"></div>
+<div class="td" style="width: 80px;"></div>
+<div class="td" style="width: 200px;"></div>
+<div class="td" style="width: 100px;"></div>
+<div class="td" style="width: 50px;"></div>
+<div class="td" style="width: 70px;">合计</div>
+<div class="td" style="width: 80px;"><span class="content">${totalPrice?string("0.00")!""}</span></div>
+<div class="td last-td" style="width: 79px;"></div>
+</div>
 
 </div>
 
 <div style="width:100%; height:30px;"></div>
 <div class="tr">
 <div class="td" style="width:80px;"><span class="bgText">申报日期：</span></div>
-<div class="td" style="width: 40px;">${(dateTime?string("yyyy"))!""}</div>
+<div class="td" style="width: 40px;"><span class="content">${(dateTime?string("yyyy"))!""}</span></div>
 <div class="td" style="width:20px;"><span class="bgText">年</span></div>
-<div class="td" style="width: 40px;">${(dateTime?string("MM"))!""}</div>
+<div class="td" style="width: 40px;"><span class="content">${(dateTime?string("MM"))!""}</span></div>
 <div class="td" style="width:20px;"><span class="bgText">月</span></div>
-<div class="td" style="width: 40px;">${(dateTime?string("dd"))!""}</div>
+<div class="td" style="width: 40px;"><span class="content">${(dateTime?string("dd"))!""}</span></div>
 <div class="td" style="width:20px;"><span class="bgText">日</span></div>
 
 <div class="td" style="width:170px;"></div>
@@ -190,10 +203,6 @@
 
 </div>
 
-
-</div>
-
 <div style="width: 100%; height: 20px;"></div>
-</div>
 </body>
 </html>

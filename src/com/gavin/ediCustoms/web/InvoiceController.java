@@ -25,6 +25,7 @@ import com.gavin.ediCustoms.entity.edi.core.CustomsDeclarationHead;
 import com.gavin.ediCustoms.entity.edi.core.PackingItem;
 import com.gavin.ediCustoms.entity.edi.dictionary.Country;
 import com.gavin.ediCustoms.entity.edi.dictionary.Currency;
+import com.gavin.ediCustoms.entity.edi.dictionary.Customs;
 import com.gavin.ediCustoms.entity.edi.dictionary.DealMode;
 import com.gavin.ediCustoms.entity.edi.dictionary.Truck;
 import com.gavin.ediCustoms.entity.edi.dictionary.Unit;
@@ -35,6 +36,7 @@ import com.gavin.ediCustoms.server.dao.EnterpriseDao;
 import com.gavin.ediCustoms.server.dao.PackingItemDao;
 import com.gavin.ediCustoms.server.dao.dictionary.CountryDao;
 import com.gavin.ediCustoms.server.dao.dictionary.CurrencyDao;
+import com.gavin.ediCustoms.server.dao.dictionary.CustomsDao;
 import com.gavin.ediCustoms.server.dao.dictionary.DealModeDao;
 import com.gavin.ediCustoms.server.dao.dictionary.TruckDao;
 import com.gavin.ediCustoms.server.dao.dictionary.UnitDao;
@@ -309,7 +311,7 @@ public class InvoiceController {
 				.get(id);
 		List<CustomsDeclarationGood> customsDeclarationGoods = customsDeclarationGoodDao
 				.find("customsDeclarationHeadId", id);
-		// getCustomsDeclarationHeadDetail(customsDeclarationHead);
+		getCustomsDeclarationHeadDetail(customsDeclarationHead);
 		double totalPrice = 0;
 		for (CustomsDeclarationGood customsDeclarationGood : customsDeclarationGoods) {
 			getCustomsDeclarationGoodDetail(customsDeclarationGood);
@@ -322,6 +324,7 @@ public class InvoiceController {
 		paramsWrap1.getEnterprise().setBank(enterprise.getBank());
 		paramsWrap1.getEnterprise().setBankAccount(enterprise.getBankAccount());
 
+		map.put("customsDeclarationHead", customsDeclarationHead);
 		map.put("customsDeclarationGoods", customsDeclarationGoods);
 		map.put("enterprise", paramsWrap1.getEnterprise());
 		map.put("foreignEnterprise", paramsWrap1.getForeignEnterprise());
@@ -353,6 +356,10 @@ public class InvoiceController {
 		Country country = countryDao.get(customsDeclarationHead.getTradeCountry());
 		if (country != null) {
 			customsDeclarationHead.setTradeCountry(country.getName());
+		}
+		Customs customs = customsDao.get(customsDeclarationHead.getIePort());
+		if (customs != null) {
+			customsDeclarationHead.setIePort(customs.getName());
 		}
 
 	}
@@ -409,4 +416,6 @@ public class InvoiceController {
 	private CountryDao countryDao;
 	@Autowired
 	private TruckDao truckDao;
+	@Autowired
+	private CustomsDao customsDao;
 }
