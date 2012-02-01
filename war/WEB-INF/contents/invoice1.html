@@ -2,31 +2,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>发票打印</title>
-<link type="text/css" href="invoice1.css" rel="stylesheet">
+<link type="text/css" href="print.css" rel="stylesheet">
 <script type="text/javascript" src="../jquery.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		window.onafterprint=function(){$('#toolbar').show();}
-	});
-	function preview(isPreview) {
-		if (isPreview) {
-			$("div").css("border-color", "#000000");
-			$("div").css("color", "#000000");
-		} else {
-			$("#frame div").css("border-color", "#ffffff");
-			$("div").css("color", "#ffffff");
-			$(".content").css("color", "#000000");
-			$("#toorbar").css("color", "#000000");
-		}
-	}
-</script>
+<script type="text/javascript" src="../print.js"></script>
+
+<style type="text/css">
+h1 {
+	font-family: "STFangsong";
+	font-size: 26px;
+	font-weight: normal;
+}
+
+.bgText{
+	font-size: 14;
+}
+
+.table {
+	border: 1px solid;
+}
+
+.bold-value {
+	padding-top: 5px;
+	height: 25px;
+	text-align: center;
+	font-size: 16px;
+	border-bottom: 2px solid;
+}
+
+
+</style>
 
 </head>
 <body>
-<div id="toolbar">
-<button type="button"
-	onclick="javascript:$('#toolbar').hide();preview(true);window.print();">打印</button>
-</div>
 <div id="frame">
 <div style="width: 100%; height: 80px;"></div>
 <div class="tr" style="text-align: center; height: 50px;">
@@ -36,21 +43,21 @@ INVOICE</h1>
 <div class="tr" style="height: 20px;">
 <div class="td" style="height: 20px; width: 481px;"></div>
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">发票号码：</span></div>
-<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;">${(invoiceNo[0])!""}</div>
+<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${(invoiceNo[0])!""}</span></div>
 </div>
 <div class="tr" style="height: 20px; margin-top: 10px;">
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">商　　号：</span></div>
-<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;">${foreignEnterprise.registeName!""}</div>
+<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;"><span class="content">${foreignEnterprise.registeName!""}</span></div>
 <div class="td" style="height: 20px; width: 92px;"></div>
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">合同号码：</span></div>
-<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;">${contractNo[0]!""}</div>
+<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${contractNo[0]!""}</span></div>
 </div>
 <div class="tr" style="height: 20px; margin-top: 10px;">
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText"><#if customsDeclarationHead.isExport>发货单位：<#else>收货单位：</#if></span></div>
-<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;">${enterprise.registeName!""}</div>
+<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;"><span class="content">${enterprise.registeName!""}</span></div>
 <div class="td" style="height: 20px; width: 92px;"></div>
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">日　　期：</span></div>
-<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;">${(dateTime?string("yyyy年MM月dd日"))!""}</div>
+<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${(dateTime?string("yyyy年MM月dd日"))!""}</span></div>
 </div>
 <div class="clear"></div>
 
@@ -63,7 +70,7 @@ INVOICE</h1>
 <div class="td header last-td" style="width: 125px;"><span class="bgText">总价</span></div>
 </div>
 <div class="tr last-tr" style="height: 610px;">
-<div class="td" style="height: 744px; width: 64px;">${shipingMark[0]!""}</div>
+<div class="td" style="height: 744px; width: 64px;"><span class="content">${shipingMark[0]!""}</span></div>
 <div class="td last-td" style="height: 610px; width: 635px;">
 <#if (customsDeclarationGoods?size>23)> 
 	<#assign listlen=23> 
@@ -73,10 +80,10 @@ INVOICE</h1>
 <#if (customsDeclarationGoods?size>0)>
 <#list customsDeclarationGoods[0..listlen-1] as customsDeclarationGood>
 <div class="tr">
-<div class="td" style="width: 324px;">${customsDeclarationGood.name!""}</div>
-<div class="td" style="width: 92px;">${customsDeclarationGood.quantity?string("0.###")!""}${customsDeclarationGood.declareUnit!""}</div>
-<div class="td" style="width: 90px;">#{customsDeclarationGood.declarePrice!"";m2M2}</div>
-<div class="td last-td" style="width: 125px;">#{customsDeclarationGood.totalPrice!"";m2M2}</div>
+<div class="td" style="width: 324px;"><span class="content">${customsDeclarationGood.name!""}</span></div>
+<div class="td" style="width: 92px;"><span class="content">${customsDeclarationGood.quantity?string("0.###")!""}${customsDeclarationGood.declareUnit!""}</span></div>
+<div class="td" style="width: 90px;"><span class="content">#{customsDeclarationGood.declarePrice!"";m2M2}</span></div>
+<div class="td last-td" style="width: 125px;"><span class="content">#{customsDeclarationGood.totalPrice!"";m2M2}</span></div>
 </div>
 </#list> 
 </#if>
@@ -92,10 +99,10 @@ INVOICE</h1>
 
 <#if (customsDeclarationGoods?size>0)>
 <div class="tr">
-<div class="td" style="width: 324px;">成交方式：${dealMode[0]!""}　${dealModeAddress[0]!""}</div>
+<div class="td" style="width: 324px;"><span class="content">成交方式：${dealMode[0]!""}　${dealModeAddress[0]!""}</span></div>
 <div class="td" style="width: 92px;"></div>
-<div class="td" style="width: 90px;">总值(${customsDeclarationGoods[0].currency!""})</div>
-<div class="td last-td" style="width: 125px;">#{totalPrice!"";m2M2}</div>
+<div class="td" style="width: 90px;"><span class="content">总值(${customsDeclarationGoods[0].currency!""})</span></div>
+<div class="td last-td" style="width: 125px;"><span class="content">#{totalPrice!"";m2M2}</span></div>
 </div>
 </#if>
 
