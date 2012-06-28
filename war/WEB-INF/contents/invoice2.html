@@ -256,7 +256,7 @@ listlen=customsDeclarationGoods?size> </#if> <#list
 customsDeclarationGoods[0..listlen-1] as customsDeclarationGood>
 <div class="tr">
 <div class="td" style="width: 90px;"><span class="content">${customsDeclarationGood.no!""}</span></div>
-<div class="td" style="width: 202px;"><span class="content">${customsDeclarationGood.name!""}</span></div>
+<div class="td" style="width: 202px;text-align:left;"><span class="content">${customsDeclarationGood.name!""}</span></div>
 <div class="td" style="width: 48px;"><span class="content">${customsDeclarationGood.declareUnit!""}</span></div>
 <div class="td" style="width: 90px;"><span class="content">${customsDeclarationGood.quantity?string("0.###")}</span></div>
 <div class="td" style="width: 70px;"><span class="content">#{customsDeclarationGood.declarePrice!"";m2M2}</span></div>

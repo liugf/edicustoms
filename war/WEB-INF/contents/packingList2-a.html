@@ -7,14 +7,20 @@
 <script type="text/javascript" src="../print.js"></script>
 
 <style type="text/css">
+BODY{
+	font-size:14px;
+}
+.content{
+	font-size:14px;
+}
 h1 {
 	font-family: "STFangsong";
-	font-size: 26px;
+	font-size: 28px;
 	font-weight: normal;
 }
 
 .bgText{
-	font-size: 14;
+	font-size: 14px;;
 }
 
 .table {
@@ -30,28 +36,29 @@ h1 {
 }
 .header{
 	border: solid 1px;
-	height:60px;
+	height:50px;
 	text-align: center;
 	
 }
 .header .td{
 	border-right:solid 1px;
-	height: 60px;
+	height: 50px;
 	padding: 5px 5px 5px 5px;
 }
 .header .last-td{
 	border-right:none;
-	height: 60px;
+	height: 50px;
 	padding: 5px 5px 5px 5px;
 }
 .table .tr{
-	border-bottom: solid 1px;
+	height: 31px;
 }
 .table .last-tr{
 	border-bottom:none;
 }
 .table .td{
 	overflow: hidden;
+	height: 31px;
 }
 
 </style>
@@ -59,42 +66,35 @@ h1 {
 </head>
 <body>
 <div id="frame">
-<div style="width: 100%; height: 30px;"></div>
-<div class="tr" style="text-align: center; height: 50px;">
+<div style="width: 100%; height: 170px;"></div>
+<div class="tr" style="text-align: center; height: 29px;">
 <h1><b>出　口　货　物　装　箱　单</b></h1>
 </div>
 
 <div class="tr" style="height: 20px; margin-top: 10px;">
-<div class="td" style="height: 20px; width: 70px;"><span class="bgText">商　　号：</span></div>
-<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;"><span class="content">${foreignEnterprise.registeName!""}</span></div>
-<div class="td" style="height: 20px; width: 92px;"></div>
+<div class="td" style="height: 20px; width: 94px;"><span class="bgText">商　　　号：</span></div>
+<div class="td" style="height: 20px; width: 365px; border-bottom: 1px solid;"><span class="content">${foreignEnterprise.registeName!""}</span></div>
+<div class="td" style="height: 20px; width: 22px;"></div>
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">海关编号：</span></div>
 <div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${enterprise.tradeCode!""}</span></div>
 </div>
 <div class="tr" style="height: 20px; margin-top: 10px;">
-<div class="td" style="height: 20px; width: 70px;"><span class="bgText"><#if customsDeclarationHead.isExport>发货单位：<#else>收货单位：</#if></span></div>
-<div class="td" style="height: 20px; width: 319px; border-bottom: 1px solid;"><span class="content">${enterprise.registeName!""}</span></div>
-<div class="td" style="height: 20px; width: 92px;"></div>
+<div class="td" style="height: 20px; width: 94px;"><span class="bgText"><#if customsDeclarationHead.isExport>发 货 单 位：<#else>收 货 单 位：</#if></span></div>
+<div class="td" style="height: 20px; width: 365px; border-bottom: 1px solid;"><span class="content">${enterprise.registeName!""}</span></div>
+<div class="td" style="height: 20px; width: 22px;"></div>
 <div class="td" style="height: 20px; width: 70px;"><span class="bgText">手册编号：</span></div>
 <div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${manualNo[0]!""}</span></div>
 </div>
 <div class="clear"></div>
 
-<div style="width:100%;height:100px; border: solid 1px; margin-top: 10px;">
+<div style="width:100%;height:70px; border: solid 1px; margin-top: 10px;">
 <div class="tr" style="height: 20px; margin-top: 10px;">
-<div class="td" style="height: 20px; width: 100px;"><span class="bgText">协议(合同)号：</span></div>
-<div class="td" style="height: 20px; width: 129px; border-bottom: 1px solid;"><span class="content">${contractNo[0]!""}</span></div>
-<div class="td" style="height: 20px; width: 85px;"><span class="bgText">　运输单位：</span></div>
-<div class="td" style="height: 20px; width: 187px; border-bottom: 1px solid;"><span class="content">${(truck.corporationName)!""}</span></div>
-<div class="td" style="height: 20px; width: 85px;"><span class="bgText">　国内车牌：</span></div>
-<div class="td" style="height: 20px; width: 111px; border-bottom: 1px solid;"><span class="content">${(truck.truckNo)!""}</span></div>
-</div>
-<div class="tr" style="height: 20px; margin-top: 10px;">
+<div class="td" style="height: 20px; width: 60px;"><span class="bgText">合同号：</span></div>
+<div class="td" style="height: 20px; width: 169px; border-bottom: 1px solid;"><span class="content">${contractNo[0]!""}</span></div>
 <div class="td" style="height: 20px; width: 100px;"><span class="bgText">运抵国(地区)：</span></div>
-<div class="td" style="height: 20px; width: 289px; border-bottom: 1px solid;"><span class="content">${customsDeclarationHead.tradeCountry!""}</span></div>
-<div class="td" style="height: 20px; width: 92px;"></div>
-<div class="td" style="height: 20px; width: 70px;"><span class="bgText">司机姓名：</span></div>
-<div class="td" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${(truck.driverName)!""}</span></div>
+<div class="td" style="height: 20px; width: 172px; border-bottom: 1px solid;"><span class="content">${customsDeclarationHead.tradeCountry!""}</span></div>
+<div class="td" style="height: 20px; width: 75px;"><span class="bgText">　车牌号：</span></div>
+<div class="td" style="height: 20px; width: 121px; border-bottom: 1px solid;"><span class="content">${(truck.truckNo)!""}</span></div>
 </div>
 <div class="tr" style="height: 20px; margin-top: 10px;">
 <div class="td" style="height: 20px; width: 50px;"><span class="bgText">件数：</span></div>
@@ -109,21 +109,21 @@ h1 {
 </div>
 
 <div class="tr header" style="margin-top: -1px; ">
-<div class="td" style="width: 40px;"><span class="bgText">序<br/><br/>号</span></div>
+<div class="td" style="width: 40px;"><span class="bgText">序<br/>号</span></div>
 <div class="td" style="width: 80px;"><span class="bgText">海关统计商品编号</span></div>
 <div class="td" style="width: 279px;"><span class="bgText"><br/>货名规格及货号</span></div>
 <div class="td" style="width: 150px; padding: 0;">
 <div class="tr" style="padding:3px; height:20px; border-bottom: solid 1px;">数量</div>
-<div class="tr" style="height:39px;">
-<div class="td" style="width: 100px; height:39px; padding-top:10px;">数　量</div>
-<div class="td" style="width: 49px; height:39px;padding-top:10px; border: none;">单位</div>
+<div class="tr" style="height:27px;">
+<div class="td" style="width: 100px; height:27px; ">数　量</div>
+<div class="td" style="width: 49px; height:27px;border: none;">单位</div>
 </div>
 </div>
 <div class="td last-td" style="width: 150px; padding: 0;">
 <div class="tr" style="padding:3px; height:20px; border-bottom: solid 1px;">成交价格</div>
-<div class="tr" style="height:39px;">
-<div class="td" style="width: 70px; height:39px; padding-top:3px;">单价<br/>(<span class="content">${customsDeclarationGoods[0].currency!""}</span>)</div>
-<div class="td" style="width: 79px; height:39px;padding-top:3px; border: none;">总价<br/>(<span class="content">${customsDeclarationGoods[0].currency!""}</span>)</div>
+<div class="tr" style="height:27px;">
+<div class="td" style="width: 70px; height:27px; ">单价</div>
+<div class="td" style="width: 79px; height:27px; border: none;">总价</div>
 </div>
 </div>
 </div>
@@ -166,32 +166,32 @@ h1 {
 <div class="td" style="width: 279px;"></div>
 <div class="td" style="width: 100px;"></div>
 <div class="td" style="width: 50px;"></div>
-<div class="td" style="width: 70px;">合计</div>
+<div class="td" style="width: 70px;"><span class="content">合计(${customsDeclarationGoods[0].currency!""})</span></div>
 <div class="td last-td" style="width: 80px;"><span class="content">${totalPrice?string("0.00")!""}</span></div>
 </div>
 
 </div>
 
+<div style="height:2px;"></div>
 
-<div style="width:100%; height:30px;"></div>
-<div class="tr">
-<div class="td" style="width:80px;"><span class="bgText">申报日期：</span></div>
-<div class="td" style="width: 40px;"><span class="content">${(dateTime?string("yyyy"))!""}</span></div>
-<div class="td" style="width:20px;"><span class="bgText">年</span></div>
-<div class="td" style="width: 40px;"><span class="content">${(dateTime?string("MM"))!""}</span></div>
-<div class="td" style="width:20px;"><span class="bgText">月</span></div>
-<div class="td" style="width: 40px;"><span class="content">${(dateTime?string("dd"))!""}</span></div>
-<div class="td" style="width:20px;"><span class="bgText">日</span></div>
+<div class="tr" style=height:15px;"">
+<div class="td" style="width:80px;height:15px;"><span class="bgText">申报日期：</span></div>
+<div class="td" style="width: 40px;height:15px;"><span class="content">${(dateTime?string("yyyy"))!""}</span></div>
+<div class="td" style="width:20px;height:15px;"><span class="bgText">年</span></div>
+<div class="td" style="width: 40px;height:15px;"><span class="content">${(dateTime?string("MM"))!""}</span></div>
+<div class="td" style="width:20px;height:15px;"><span class="bgText">月</span></div>
+<div class="td" style="width: 40px;height:15px;"><span class="content">${(dateTime?string("dd"))!""}</span></div>
+<div class="td" style="width:20px;height:15px;"><span class="bgText">日</span></div>
 
-<div class="td" style="width:170px;"></div>
+<div class="td" style="width:170px;height:15px;"></div>
 
-<div class="td" style="width:80px;"><span class="bgText">发货日期：</span></div>
-<div class="td" style="width: 40px;"></div>
-<div class="td" style="width:20px;"><span class="bgText">年</span></div>
-<div class="td" style="width: 40px;"></div>
-<div class="td" style="width:20px;"><span class="bgText">月</span></div>
-<div class="td" style="width: 40px;"></div>
-<div class="td" style="width:20px;"><span class="bgText">日</span></div>
+<div class="td" style="width:80px;height:15px;"><span class="bgText">发货日期：</span></div>
+<div class="td" style="width: 40px;height:15px;"></div>
+<div class="td" style="width:20px;height:15px;"><span class="bgText">年</span></div>
+<div class="td" style="width: 40px;height:15px;"></div>
+<div class="td" style="width:20px;height:15px;"><span class="bgText">月</span></div>
+<div class="td" style="width: 40px;height:15px;"></div>
+<div class="td" style="width:20px;height:15px;"><span class="bgText">日</span></div>
 </div>
 <div class="tr">
 <div class="td" style="width:430px;"><span class="bgText">报关单位及报关员(签章)</span></div>
@@ -201,6 +201,6 @@ h1 {
 
 </div>
 
-<div style="width: 100%; height: 20px;"></div>
+
 </body>
 </html>

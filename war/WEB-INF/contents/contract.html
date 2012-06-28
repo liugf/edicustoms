@@ -3,30 +3,75 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>合同打印</title>
-<link type="text/css" href="contract.css" rel="stylesheet">
+<link type="text/css" href="print.css" rel="stylesheet">
 <script type="text/javascript" src="../jquery.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		window.onafterprint=function(){$('#toolbar').show();}
-	});
-	function preview(isPreview) {
-		if (isPreview) {
-			$("div").css("border-color", "#000000");
-			$("div").css("color", "#000000");
-		} else {
-			$("#frame div").css("border-color", "#ffffff");
-			$("div").css("color", "#ffffff");
-			$(".content").css("color", "#000000");
-			$("#toorbar").css("color", "#000000");
-		}
-	}
-</script>
+<script type="text/javascript" src="../print.js"></script>
+
+<style type="text/css">
+BODY{
+	font-size:12px;
+}
+h1 {
+	font-family: "STFangsong";
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#frame {
+	margin: 0 auto;
+	width: 702px;
+	text-align: left;
+}
+
+.clear {
+	clear: both;
+}
+
+.table {
+	border: 1px solid;
+}
+
+.tr {
+	float: none;
+	height: 30px;
+	width: 100%;
+	height: 30px;
+}
+
+.td {
+	float: left;
+	height: 30px;
+}
+
+.bold-value {
+	padding-top: 5px;
+	height: 25px;
+	text-align: center;
+	font-size: 16px;
+	border-bottom: 2px solid;
+}
+
+.table .tr {
+	height: 26px;
+	border-bottom: 1px solid;
+}
+
+.table .td {
+	border-right: 1px solid;
+	height: 26px;
+	text-align: center;
+}
+
+.table .last-tr {
+	border-bottom: none;
+}
+
+.table .last-td {
+	border-right: none;
+}
+</style>
 </head>
 <body>
-<div id="toolbar">
-<button type="button"
-	onclick="javascript:$('#toolbar').hide();preview(true);window.print();">打印</button>
-</div>
 	<div id="frame">
 		<div style="width: 100%; height: 80px;"></div>
 		<div class="tr" style="height:100px;">
@@ -36,43 +81,43 @@
 			<div class="td" style="width:253px;height:100px;">
 				<div class="tr" >
 					<div class="td" style="width:78px;">合同号码:<br/>Contract No:</div>
-					<div class="td bold-value" style="width:175px;">${(contractNo[0])!""}</div>					
+					<div class="td bold-value" style="width:175px;"><span class="content">${(contractNo[0])!""}</span></div>					
 				</div>
 				<div class="clear"></div>
 				<div class="tr" >
 					<div class="td" style="width:78px;">日&nbsp;&nbsp;&nbsp;&nbsp;期:<br/>Date:</div>
-					<div class="td bold-value" style="width:175px;">${dateTime?string("yyyy年MM月dd日")!""}</div>
+					<div class="td bold-value" style="width:175px;"><span class="content">${dateTime?string("yyyy年MM月dd日")!""}</span></div>
 				</div>
 				<div class="clear"></div>
 				<div class="tr" >
 					<div class="td" style="width:78px;">签定地:<br/>Signd in:</div>
-					<div class="td bold-value" style="width:175px;">${signedIn[0]!""}</div>
+					<div class="td bold-value" style="width:175px;"><span class="content">${signedIn[0]!""}</span></div>
 				</div>
 				<div class="clear"></div>
 			</div>
 		</div>
 		<div class="tr" >
-			<div class="td" style="width:78px;">买&nbsp;&nbsp;&nbsp;&nbsp;方:<br/>The Buyers:</div>
-			<div class="td bold-value" style="width:455px;">${foreignEnterprise.registeName!""}</div>
-			<div class="td" style="width:160px; padding-top: 10px; height: 20px;">&nbsp;电话:${foreignEnterprise.telephone!""}</div>
+			<div class="td" style="width:78px;"><#if customsDeclarationHead.isExport>买<#else>卖</#if>&nbsp;&nbsp;&nbsp;&nbsp;方:<br/>The <#if customsDeclarationHead.isExport>Buyers<#else>Sellers</#if>:</div>
+			<div class="td bold-value" style="width:455px;"><span class="content">${foreignEnterprise.registeName!""}</span></div>
+			<div class="td" style="width:160px; padding-top: 10px; height: 20px;"><span class="content">&nbsp;电话:${foreignEnterprise.telephone!""}</span></div>
 		</div>
 		<div class="clear"></div>
 		<div class="tr" >
 			<div class="td" style="width:78px;">地&nbsp;&nbsp;&nbsp;&nbsp;址:<br/>Address:</div>
-			<div class="td bold-value" style="width:455px;">${foreignEnterprise.address!""}</div>
-			<div class="td" style="width:160px; padding-top: 10px; height: 20px;">&nbsp;传真:${foreignEnterprise.fax!""}</div>
+			<div class="td bold-value" style="width:455px;"><span class="content">${foreignEnterprise.address!""}</span></div>
+			<div class="td" style="width:160px; padding-top: 10px; height: 20px;"><span class="content">&nbsp;传真:${foreignEnterprise.fax!""}</span></div>
 		</div>
 		<div class="clear"></div>
 		<div class="tr" >
-			<div class="td" style="width:78px;">卖&nbsp;&nbsp;&nbsp;&nbsp;方:<br/>The Sellers:</div>
-			<div class="td bold-value" style="width:455px;">${enterprise.registeName!""}</div>
-			<div class="td" style="width:160px; padding-top: 10px; height: 20px;">&nbsp;电话:${enterprise.telephone!""}</div>
+			<div class="td" style="width:78px;"><#if customsDeclarationHead.isExport>卖<#else>买</#if>&nbsp;&nbsp;&nbsp;&nbsp;方:<br/>The <#if customsDeclarationHead.isExport>Sellers<#else>Buyers</#if>:</div>
+			<div class="td bold-value" style="width:455px;"><span class="content">${enterprise.registeName!""}</span></div>
+			<div class="td" style="width:160px; padding-top: 10px; height: 20px;"><span class="content">&nbsp;电话:${enterprise.telephone!""}</span></div>
 		</div>
 		<div class="clear"></div>
 		<div class="tr" >
 			<div class="td" style="width:78px;">地&nbsp;&nbsp;&nbsp;&nbsp;址:<br/>Address:</div>
-			<div class="td bold-value" style="width:455px;">${enterprise.address!""}</div>
-			<div class="td" style="width:160px; padding-top: 10px; height: 20px;">&nbsp;传真:${enterprise.fax!""}</div>
+			<div class="td bold-value" style="width:455px;"><span class="content">${enterprise.address!""}</span></div>
+			<div class="td" style="width:160px; padding-top: 10px; height: 20px;"><span class="content">&nbsp;传真:${enterprise.fax!""}</span></div>
 		</div>
 		<div class="clear"></div>
 		
@@ -87,7 +132,7 @@
 			<div class="tr" style="height:35px;" >
 				<div class="td" style="width:259px; height:35px;">商品名称，规格及包装<br/>Name of Commodity,Specification & packing</div>
 				<div class="td" style="width:103px; height:35px;">数&nbsp;&nbsp;&nbsp;&nbsp;量<br/>Quantity</div>
-				<div class="td" style="width:159px; height:35px;">买&nbsp;&nbsp;&nbsp;&nbsp;价<br/>Unit Price</div>
+				<div class="td" style="width:159px; height:35px;">单&nbsp;&nbsp;&nbsp;&nbsp;价<br/>Unit Price</div>
 				<div class="td last-td" style="width:175px; height:35px;">总&nbsp;&nbsp;&nbsp;&nbsp;值<br/>Total Value</div>
 			</div>				
 			
@@ -98,10 +143,10 @@
 			</#if>
 			<#list customsDeclarationGoods[0..listlen-1]	as customsDeclarationGood>			
 			<div class="tr" style="border-bottom: none;">
-				<div class="td" style="width:259px;">${customsDeclarationGood.name!""}</div>
-				<div class="td" style="width:103px;">${customsDeclarationGood.quantity!""}${customsDeclarationGood.declareUnit!""}</div>
-				<div class="td" style="width:159px;">#{customsDeclarationGood.declarePrice!"";m2M2}</div>
-				<div class="td last-td" style="width:175px;">#{(customsDeclarationGood.declarePrice*customsDeclarationGood.quantity)!"";m2M2}</div>
+				<div class="td" style="width:259px;"><span class="content">${customsDeclarationGood.name!""}</span></div>
+				<div class="td" style="width:103px;"><span class="content">${customsDeclarationGood.quantity!""}${customsDeclarationGood.declareUnit!""}</span></div>
+				<div class="td" style="width:159px;"><span class="content">#{customsDeclarationGood.declarePrice!"";m2M2}</span></div>
+				<div class="td last-td" style="width:175px;"><span class="content">#{(customsDeclarationGood.declarePrice*customsDeclarationGood.quantity)!"";m2M2}</span></div>
 			</div>			
 			</#list>
 			
@@ -123,13 +168,13 @@
 				<div class="td" style="width:259px;"><#if (customsDeclarationGoods?size>5)>（详见发票）</#if></div>
 				<div class="td" style="width:103px;">&nbsp;</div>
 				<div class="td" style="width:159px;">&nbsp;</div>
-				<div class="td last-td" style="width:175px; text-align: left;">成交方式：${dealMode[0]!""}　${dealModeAddress[0]!""}</div>
+				<div class="td last-td" style="width:175px; text-align: left;"><span class="content">成交方式：${dealMode[0]!""}　${dealModeAddress[0]!""}</span></div>
 			</div>	
 			<div class="tr">
 				<div class="td" style="width:259px;text-align: left;">Total:</div>
 				<div class="td" style="width:103px;">&nbsp;</div>
 				<div class="td" style="width:159px;">&nbsp;</div>
-				<div class="td last-td" style="width:175px;">${customsDeclarationGoods[0].currency!""} #{totalPrice!"";m2M2}</div>
+				<div class="td last-td" style="width:175px;"><span class="content">${customsDeclarationGoods[0].currency!""} #{totalPrice!"";m2M2}</span></div>
 			</div>	
 			<div class="tr last-tr" style="height:35px;" >
 			&nbsp;&nbsp;&nbsp;&nbsp;(允许卖方在装货时溢装或短装，${balance[0]!""}%价格按本合同所列单价计算）<br/>
@@ -140,31 +185,31 @@
 		
 		<div class="tr" style="margin-top:5px;">
 			<div class="td" style="width:140px;">2、装运口岸:<br/>Port of Shipment:</div>
-			<div class="td" style="width:210px;">${iePort[0]!""}</div>
+			<div class="td" style="width:210px;"><span class="content">${iePort[0]!""}</span></div>
 			<div class="td" style="width:140px;">3、目的口岸:<br/>Port of Destination:</div>
-			<div class="td" style="width:210px;">${(destinationPort[0])!""}</div>
+			<div class="td" style="width:210px;"><span class="content">${(destinationPort[0])!""}</span></div>
 		</div>
 		<div class="clear"></div>		
 		<div class="tr" >
 			<div class="td" style="width:140px;">4、装运期限:<br/>Time of Shipment:</div>
-			<div class="td" style="width:210px;">${(contractHead.exportDeadline?string("yyyy年MM月dd日"))!""}至${(contractHead.importDeadline?string("yyyy年MM月dd日"))!""}</div>
+			<div class="td" style="width:210px;"><span class="content">${(contractHead.exportDeadline?string("yyyy年MM月dd日"))!""}至${(contractHead.importDeadline?string("yyyy年MM月dd日"))!""}</span></div>
 			<div class="td" style="width:140px;">5、装运标记:<br/>Shiping Makr:</div>
-			<div class="td" style="width:210px;">${shipingMark[0]!""}</div>
+			<div class="td" style="width:210px;"><span class="content">${shipingMark[0]!""}</span></div>
 		</div>
 		<div class="clear"></div>
 		<div class="tr" >
 			<div class="td" style="width:140px;">6、付款条件:<br/>Terms of payment:</div>
-			<div class="td" style="width:560px;">${termsOfPayment[0]!""}</div>			
+			<div class="td" style="width:560px;"><span class="content">${termsOfPayment[0]!""}</span></div>			
 		</div>
 		<div class="clear"></div>
 		<div class="tr" >
 			<div class="td" style="width:200px;">7、生产国别:<br/>Country of Origin & Manufacturer:</div>
-			<div class="td" style="width:400px;">${manufactureCountry[0]!""}</div>			
+			<div class="td" style="width:400px;"><span class="content">${manufactureCountry[0]!""}</span></div>			
 		</div>
 		<div class="clear"></div>
 		<div class="tr" >
 			<div class="td" style="width:140px;">8、保险:<br/>Insurance:</div>
-			<div class="td" style="width:560px;">${insurance[0]!""}</div>
+			<div class="td" style="width:560px;"><span class="content">${insurance[0]!""}</span></div>
 		</div>
 		<div class="clear"></div>
 		<div class="tr" >
@@ -183,9 +228,9 @@
 		
 		<div class="tr" style="height:40px;">
 			<div class="td" style="width:70px;height:40px;"></div>
-			<div class="td" style="width:144px;height:40px;text-align: center;border-bottom: 2px solid; font-size: 16px;">卖&nbsp;&nbsp;&nbsp;&nbsp;方<br/>THE SELLERS</div>
+			<div class="td" style="width:144px;height:40px;text-align: center;border-bottom: 2px solid; font-size: 16px;"><#if customsDeclarationHead.isExport>卖<#else>买</#if>&nbsp;&nbsp;&nbsp;&nbsp;方<br/>THE <#if customsDeclarationHead.isExport>SELLERS<#else>BUYERS</#if></div>
 			<div class="td" style="width:234px;height:40px;"></div>
-			<div class="td" style="width:144px;height:40px;text-align: center;border-bottom: 2px solid; font-size: 16px;">买&nbsp;&nbsp;&nbsp;&nbsp;方<br/>THE BUYERS</div>
+			<div class="td" style="width:144px;height:40px;text-align: center;border-bottom: 2px solid; font-size: 16px;"><#if customsDeclarationHead.isExport>买<#else>卖</#if>&nbsp;&nbsp;&nbsp;&nbsp;方<br/>THE <#if customsDeclarationHead.isExport>BUYERS<#else>SELLERS</#if></div>
 		</div>
 		<div class="clear"></div>
 		<div style="width: 100%; height: 70px;"></div>

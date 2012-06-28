@@ -99,7 +99,7 @@
 			</div>
 			<div class="tr">
 				<div class="td" style="width:210px;"><div class="bg-text">许可证号</div> <span class="content">${customsDeclarationHead.licenseNo!""}</span></div>
-				<div class="td" style="width:186px;"><div class="bg-text"><#if customsDeclarationHead.isExport>运抵国（地区）<#else>起运国（地区）</#if></div> <span class="content">${customsDeclarationHead.tradeCountry!""}</span></div>
+				<div class="td" style="width:186px;"><div class="bg-text"><#if customsDeclarationHead.isExport>运抵国（地区）<#else>启运国（地区）</#if></div> <span class="content">${customsDeclarationHead.tradeCountry!""}</span></div>
 				<div class="td" style="width:189px;"><div class="bg-text"><#if customsDeclarationHead.isExport>指运港<#else>装货港</#if></div> <span class="content">${customsDeclarationHead.destinationPort!""}</span></div>
 				<div class="td last-td" style="width:152px;"><div class="bg-text"><#if customsDeclarationHead.isExport>境内货源地<#else>境内目的地</#if></div> <span class="content">${customsDeclarationHead.ownerDistrict!""}</span></div>
 			</div>
@@ -120,7 +120,7 @@
 			<div class="tr">
 				<div class="td" style="width:210px;"><div class="bg-text">集装箱号</div> <span class="content">${container!""}</span></div>
 				<div class="td" style="width:370px;"><div class="bg-text">随附单证</div> <span class="content">${attachment!""}</span></div>
-				<div class="td last-td" style="width:157px;"><div class="bg-text">用途</div> <span class="content"><#if !customsDeclarationHead.isExport>${customsDeclarationHead.useage!""}</#if></span></div>
+				<div class="td last-td" style="width:157px;"><div class="bg-text"><#if customsDeclarationHead.isExport>生产厂家<#else>用途</#if></div> <span class="content"><#if !customsDeclarationHead.isExport>${customsDeclarationHead.useage!""}</#if></span></div>
 			</div>
 			
 			
@@ -136,7 +136,7 @@
 					<div class="td" style="width:80px;">商品编号</div>
 					<div class="td" style="width:185px;">商品名称、规格型号</div>
 					<div class="td" style="width:105px;">数量及单位</div>
-					<div class="td" style="width:180px;">最终目的国（地区）单价</div>
+					<div class="td" style="width:180px;"><#if customsDeclarationHead.isExport>最终目的国（地区）单价<#else>原产国（地区）单价</#if></div>
 					<div class="td" style="width:80px;">总价</div>
 					<div class="td" style="width:35px;">币制</div>
 					<div class="td last-td" style="width:30px;">征免</div>
@@ -200,7 +200,7 @@
 						<div class="td last-td" style="width:200px;height:45px;"><div class="bg-text">报关员</div> <span class="content">${customsDeclarationHead.declarant!""}</span></div>				
 					</div>
 					<div class="tr" style="height: 50px; border-bottom: none;">
-						<div class="td last-td" style="width:200px;height:50px;"><div class="bg-text">单位地址</div> <span class="content">${runEnterprise.address!""}</span></div>				
+						<div class="td last-td" style="width:200px;height:50px;"><div class="bg-text">单位地址</div> </div>				
 					</div>	
 					<div class="tr" style="height: 14px; border-bottom: none;">
 						<div class="td last-td" style="width:117px;height:16px;"><div class="bg-text">邮编&nbsp;<span class="content"></span></div></div>	
@@ -212,7 +212,7 @@
 						<div class="td last-td" style="width:100%;height:75px;"><div class="bg-text">兹声明以上申报无讹并承担法律责任</div> </div>				
 					</div>	
 					<div class="tr" style="height: 65px; border-bottom: none;">
-						<div class="td last-td" style="width:100%;height:65px;"><div class="bg-text" style="margin-left: 20px;">申报单位（签章）</div><span class="content">${declareEnterprise.registeName!""}</span> </div>				
+						<div class="td last-td" style="width:100%;height:65px;"><div class="bg-text" style="margin-left: 20px;">申报单位（签章）</div><span class="content">${declareEnterprise.registeName!""}</span><br/><span class="content">${declareEnterprise.tradeCode!""}</span> </div>				
 					</div>	
 					<div class="tr" style="height: 14px; border-bottom: none;">
 						<div class="td last-td" style="width:100%;height:16px;"><div class="bg-text"  style="margin-left: 20px;">填制日期&nbsp;<span class="content">${(customsDeclarationHead.declareTime?string("yyyyMMdd"))!""}</span></div></div>	

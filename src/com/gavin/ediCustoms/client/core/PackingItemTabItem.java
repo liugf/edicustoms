@@ -88,7 +88,7 @@ public class PackingItemTabItem extends MyTabItem implements CustomsDeclarationP
 	
 
 	public PackingItemTabItem() {
-		setText("装箱单");
+		setText("录入装箱明细");
 		store = new ListStore<BeanModel>();
 		store.sort("no", Style.SortDir.ASC);
 		beanModelFactory = BeanModelLookup.get().getFactory(PackingItem.class);
@@ -207,7 +207,7 @@ public class PackingItemTabItem extends MyTabItem implements CustomsDeclarationP
 							}
 						});
 				formPanel.setReadOnly(false);
-				formPanel.getFields().get(6).focus();
+				formPanel.getFields().get(0).focus();
 				saveButton.setVisible(true);
 				cancelButton.setVisible(true);
 				updateButton.setVisible(false);
@@ -347,61 +347,42 @@ public class PackingItemTabItem extends MyTabItem implements CustomsDeclarationP
 		FormData formData = new FormData("-20");
 		
 		NumberField no = new NumberField();
-		no.setTabIndex(0);
 		no.setPropertyEditorType(Integer.class);
 		no.setName("no");
 		no.setFieldLabel("序号");
-		left.add(no, formData);
+		right.add(no, formData);
 		
 		goodStore=new ListStore<BeanModel>();
 		ComboBox<BeanModel> good = new ComboBox<BeanModel>();
 		good.setForceSelection(true);
-		good.setTabIndex(1);
 		good.setEmptyText("请选择...");
 		good.setDisplayField("displayName");
-		good.setFieldLabel("商品选择");
+		good.setFieldLabel("选择货名");
 		good.setStore(goodStore);
 		good.setTypeAhead(true);
 		good.setTriggerAction(TriggerAction.ALL);
-		right.add(good,formData);
-		
-		NumberField wrapNo=new NumberField();	
-		wrapNo.setTabIndex(2);
-		wrapNo.setPropertyEditorType(Integer.class);
-		wrapNo.setName("wrapNo");
-		wrapNo.setFieldLabel("件数/托/等");
-		left.add(wrapNo,formData);	
-		
-		
-		NumberField packNo=new NumberField();	
-		packNo.setTabIndex(4);
-		packNo.setPropertyEditorType(Integer.class);
-		packNo.setName("packNo");
-		packNo.setFieldLabel("箱数");
-		right.add(packNo,formData);
+		left.add(good,formData);
 		
 		final TextField<String> name = new TextField<String>();
-		name.setTabIndex(6);
 		name.setName("name");
 		name.setFieldLabel("商品名称");
-		left.add(name,formData);
+		right.add(name,formData);
+			
 		
-		final TextField<String> clientNo = new TextField<String>();
-		clientNo.setTabIndex(7);
-		clientNo.setName("clientNo");
-		clientNo.setFieldLabel("客户编号");
-		right.add(clientNo,formData);
+		NumberField packNo=new NumberField();	
+		packNo.setPropertyEditorType(Integer.class);
+		packNo.setName("packNo");
+		packNo.setFieldLabel("箱(件)数");
+		left.add(packNo,formData);
 		
 		NumberField quantity=new NumberField();	
-		quantity.setTabIndex(8);
 		quantity.setPropertyEditorType(Double.class);
 		quantity.setFormat(NumberFormat.getFormat("#0.0000"));
 		quantity.setName("quantity");
-		quantity.setFieldLabel("数量");
+		quantity.setFieldLabel("包装数量");
 		left.add(quantity,formData);
 		
 		ComboBox<BeanModel> declareUnit = new ComboBox<BeanModel>();
-		declareUnit.setTabIndex(9);
 		declareUnit.setForceSelection(true);
 		declareUnit.setName("declareUnit");
 		declareUnit.setEmptyText("请选择...");
@@ -415,23 +396,20 @@ public class PackingItemTabItem extends MyTabItem implements CustomsDeclarationP
 		
 		
 		NumberField grossWeight=new NumberField();	
-		grossWeight.setTabIndex(10);
 		grossWeight.setPropertyEditorType(Double.class);
 		grossWeight.setFormat(NumberFormat.getFormat("#0.0000"));
 		grossWeight.setName("grossWeight");
-		grossWeight.setFieldLabel("毛重");
+		grossWeight.setFieldLabel("总毛重");
 		left.add(grossWeight,formData);
 		
 		NumberField netWeight=new NumberField();
-		netWeight.setTabIndex(11);
 		netWeight.setPropertyEditorType(Double.class);
 		netWeight.setFormat(NumberFormat.getFormat("#0.0000"));
 		netWeight.setName("netWeight");
-		netWeight.setFieldLabel("净重");
-		right.add(netWeight,formData);
+		netWeight.setFieldLabel("总净重");
+		left.add(netWeight,formData);
 		
 		NumberField grossWeightPerPack=new NumberField();	
-		grossWeightPerPack.setTabIndex(12);
 		grossWeightPerPack.setPropertyEditorType(Double.class);
 		grossWeightPerPack.setFormat(NumberFormat.getFormat("#0.0000"));
 		grossWeightPerPack.setName("grossWeightPerPack");
@@ -439,12 +417,11 @@ public class PackingItemTabItem extends MyTabItem implements CustomsDeclarationP
 		left.add(grossWeightPerPack,formData);
 		
 		NumberField netWeightPerPack=new NumberField();
-		netWeightPerPack.setTabIndex(13);
 		netWeightPerPack.setPropertyEditorType(Double.class);
 		netWeightPerPack.setFormat(NumberFormat.getFormat("#0.0000"));
 		netWeightPerPack.setName("netWeightPerPack");
 		netWeightPerPack.setFieldLabel("每箱净重");
-		right.add(netWeightPerPack,formData);
+		left.add(netWeightPerPack,formData);
 		
 		
 		main.add(left, new ColumnData(.5));

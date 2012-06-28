@@ -2,6 +2,7 @@ package com.gavin.ediCustoms.web;
 
 import java.io.OutputStream;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -44,7 +45,7 @@ import com.gavin.ediCustoms.server.dao.dictionary.TradeModeDao;
 import com.gavin.ediCustoms.server.dao.dictionary.UnitDao;
 
 @Controller
-public class customsDeclarationManagerController {
+public class CustomsDeclarationManagerController {
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/customsDeclarationManager.do")
@@ -225,7 +226,7 @@ public class customsDeclarationManagerController {
             			wsheet.addCell(new Label(7, i, unit.getName()));
     				}
     			}
-            	wsheet.addCell(new Number(8, i, customsDeclarationGood.getDeclarePrice()));
+            	wsheet.addCell(new Label(8, i, new DecimalFormat("#.0000").format(customsDeclarationGood.getDeclarePrice())));
             	wsheet.addCell(new Label(9, i, customsDeclarationHead.getCertificationCode()));
             	if (customsDeclarationGood.getOriginCountry()!=null) {
             		Country country = countryDao.get(customsDeclarationGood.getOriginCountry());
@@ -243,7 +244,7 @@ public class customsDeclarationManagerController {
             	wsheet.addCell(new Label(15, i, customsDeclarationGood.getPlusCode()));
             	wsheet.addCell(new Label(16, i, customsDeclarationGood.getName()));
             	wsheet.addCell(new Label(17, i, customsDeclarationGood.getShenbaoguifan()));
-            	wsheet.addCell(new Number(18, i, customsDeclarationGood.getTotalPrice()));
+            	wsheet.addCell(new Label(18, i, new DecimalFormat("#.00").format(customsDeclarationGood.getTotalPrice()) ));
             	
             	
             	++i;

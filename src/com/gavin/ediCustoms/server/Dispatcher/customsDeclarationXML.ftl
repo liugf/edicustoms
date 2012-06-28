@@ -65,6 +65,11 @@
                 <@tcs attribute="CorporationCustomsCode" value=declareEnterprise.tradeCode />
                 <@tcs attribute="CorporationName" value=declareEnterprise.registeName />
               </tcs:EntryIdentityInformation>
+              <tcs:EntryIdentityInformation>
+                <tcs:EntryIdentity>004</tcs:EntryIdentity>
+                <@tcs attribute="CorporationCustomsCode" value="744483308" />
+                <@tcs attribute="CorporationName" value="东莞市新泽报关咨询服务有限公司" />
+              </tcs:EntryIdentityInformation>
             </tcs:EntryIdentityInformationList>
             <tcs:LogisticsLocationInformationList>
               <tcs:LogisticsLocationInformation>
@@ -203,6 +208,7 @@
             </tcs:DocumentAttachedInformationList> 
             </#if>        
           </tcs:EntryInformation>
+          
           
           <tcs:TransitInformation>
           	<tcs:TransitBaseInformation>

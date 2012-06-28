@@ -565,7 +565,7 @@ public class ExportPrintTabItem extends MyTabItem implements CustomsDeclarationP
 		
 		
 		
-		Button printButton1= new Button("打印发票",Resources.ICONS.printer());
+		Button printButton1= new Button("发票",Resources.ICONS.printer());
 		printButton1.setTabIndex(31);
 		printButton1.addSelectionListener(new SelectionListener<ButtonEvent>() {
 			@SuppressWarnings("rawtypes")
@@ -594,7 +594,7 @@ public class ExportPrintTabItem extends MyTabItem implements CustomsDeclarationP
 			}
 		});
 		
-		Button printButton2= new Button("打印统一发票",Resources.ICONS.printer());
+		Button printButton2= new Button("国税发票",Resources.ICONS.printer());
 		printButton2.setTabIndex(32);
 		printButton2.addSelectionListener(new SelectionListener<ButtonEvent>() {
 			@SuppressWarnings("rawtypes")
@@ -657,7 +657,7 @@ public class ExportPrintTabItem extends MyTabItem implements CustomsDeclarationP
 			}
 		});
 		
-		Button printButton4= new Button("装箱单(凤岗长安)",Resources.ICONS.printer());
+		Button printButton4= new Button("凤岗装箱单",Resources.ICONS.printer());
 		printButton4.setTabIndex(33);
 		printButton4.addSelectionListener(new SelectionListener<ButtonEvent>() {
 			@SuppressWarnings("rawtypes")
@@ -686,7 +686,7 @@ public class ExportPrintTabItem extends MyTabItem implements CustomsDeclarationP
 			}
 		});
 		
-		Button printButton5= new Button("打印合同",Resources.ICONS.printer());
+		Button printButton5= new Button("合同",Resources.ICONS.printer());
 		printButton5.setTabIndex(34);
 		printButton5.addSelectionListener(new SelectionListener<ButtonEvent>() {
 			@SuppressWarnings("rawtypes")
@@ -715,7 +715,7 @@ public class ExportPrintTabItem extends MyTabItem implements CustomsDeclarationP
 			}
 		});
 		
-		Button printButton6= new Button("打印装箱单(物流)",Resources.ICONS.printer());
+		Button printButton6= new Button("装箱明细单",Resources.ICONS.printer());
 		printButton6.setTabIndex(33);
 		printButton6.addSelectionListener(new SelectionListener<ButtonEvent>() {
 			@SuppressWarnings("rawtypes")
@@ -744,12 +744,12 @@ public class ExportPrintTabItem extends MyTabItem implements CustomsDeclarationP
 			}
 		});
 		
-		panel.addButton(printButton1);
-		panel.addButton(printButton2);	
+		panel.addButton(printButton5);
+		panel.addButton(printButton1);	
 		panel.addButton(printButton3);
-		panel.addButton(printButton4);
 		panel.addButton(printButton6);
-		panel.addButton(printButton5);	
+		panel.addButton(printButton4);
+		panel.addButton(printButton2);	
 		panel.setButtonAlign(HorizontalAlignment.CENTER);
 		
 		

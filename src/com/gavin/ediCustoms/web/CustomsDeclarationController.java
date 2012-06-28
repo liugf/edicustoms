@@ -75,7 +75,7 @@ public class CustomsDeclarationController {
 		}
 		
 		String manualNo = "";
-		if (!isNomalTrade) {
+		if (!isNomalTrade && customsDeclarationHead.getContractHeadId()!=null) {
 			ContractHead contractHead = contractHeadDao.get(customsDeclarationHead.getContractHeadId());
 			if (contractHead!=null) {
 				manualNo=contractHead.getManualNo();
@@ -182,7 +182,7 @@ public class CustomsDeclarationController {
 		}
 		Currency currency=currencyDao.get(customsDeclarationGood.getCurrency());
 		if (currency!=null) {
-			customsDeclarationGood.setCurrency(currency.getName()+"<br/>("+currency.getShortName()+")");
+			customsDeclarationGood.setCurrency(currency.getName()+"<br/>("+currency.getCode()+")");
 		}
 		TaxMode taxMode=taxModeDao.get(customsDeclarationGood.getTaxMode());
 		if (taxMode!=null) {

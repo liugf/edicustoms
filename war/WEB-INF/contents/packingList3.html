@@ -13,10 +13,6 @@ h1 {
 	font-weight: normal;
 }
 
-.bgText{
-	font-size: 14;
-}
-
 .table {
 	border: 1px solid;
 }
@@ -42,35 +38,34 @@ PACKING DETAILS</h1>
 </div>
 <div class="tr" style="height: 20px;">
 <div class="td" style="height: 20px; width: 481px;"></div>
-<div class="td" style="height: 20px; width: 70px;"><span class="bgText">发票号码：</span></div>
-<div class="td editable" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${(invoiceNo[0])!""}</span></div>
+<div class="td" style="height: 20px; width: 80px;"><span class="bgText">发票号码：</span></div>
+<div class="td editable" style="height: 20px; width: 136px; border-bottom: 1px solid;"><span class="content">${(invoiceNo[0])!""}</span></div>
 </div>
 <div class="tr" style="height: 20px; margin-top: 10px;">
-<div class="td" style="height: 20px; width: 70px;"><span class="bgText">商　　号：</span></div>
-<div class="td editable" style="height: 20px; width: 319px; border-bottom: 1px solid;"><span class="content">${foreignEnterprise.registeName!""}</span></div>
-<div class="td" style="height: 20px; width: 92px;"></div>
-<div class="td" style="height: 20px; width: 70px;"><span class="bgText">合同号码：</span></div>
-<div class="td editable" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${contractNo[0]!""}</span></div>
+<div class="td" style="height: 20px; width: 105px;"><span class="bgText">商　　　号：</span></div>
+<div class="td editable" style="height: 20px; width: 354px; border-bottom: 1px solid;"><span class="content">${foreignEnterprise.registeName!""}</span></div>
+<div class="td" style="height: 20px; width: 22px;"></div>
+<div class="td" style="height: 20px; width: 80px;"><span class="bgText">合同号码：</span></div>
+<div class="td editable" style="height: 20px; width: 136px; border-bottom: 1px solid;"><span class="content">${contractNo[0]!""}</span></div>
 </div>
 <div class="tr" style="height: 20px; margin-top: 10px;">
-<div class="td" style="height: 20px; width: 70px;"><#if customsDeclarationHead.isExport>发货单位：<#else>收货单位：</#if></div>
-<div class="td editable" style="height: 20px; width: 319px; border-bottom: 1px solid;"><span class="content">${enterprise.registeName!""}</span></div>
-<div class="td" style="height: 20px; width: 92px;"></div>
-<div class="td" style="height: 20px; width: 70px;"><span class="bgText">日　　期：</span></div>
-<div class="td editable" style="height: 20px; width: 146px; border-bottom: 1px solid;"><span class="content">${(dateTime?string("yyyy年MM月dd日"))!""}</span></div>
+<div class="td" style="height: 20px; width: 105px;"><#if customsDeclarationHead.isExport>发 货 单 位：<#else>收 货 单 位：</#if></div>
+<div class="td editable" style="height: 20px; width: 354px; border-bottom: 1px solid;"><span class="content">${enterprise.registeName!""}</span></div>
+<div class="td" style="height: 20px; width: 22px;"></div>
+<div class="td" style="height: 20px; width: 80px;"><span class="bgText">日　　期：</span></div>
+<div class="td editable" style="height: 20px; width: 136px; border-bottom: 1px solid;"><span class="content">${(dateTime?string("yyyy年MM月dd日"))!""}</span></div>
 </div>
 <div class="clear"></div>
 
 <div class="table" style=" margin-top: 10px; border-left: none; border-right: none;border-bottom: none; ">
 <div class="tr header" style="border-bottom: 1px solid;">
-<div class="td header" style="width: 241px;"><span class="bgText">商品名称/规格型号</span></div>
-<div class="td header" style="width: 59px;"><span class="bgText">件数</span></div>
-<div class="td header" style="width: 79px;"><span class="bgText">箱数</span></div>
-<div class="td header" style="width: 79px;"><span class="bgText">数量</span></div>
-<div class="td header" style="width: 59px;line-height:18px;"><span class="bgText">总净重<br/>(kg)</span></div>
-<div class="td header" style="width: 60px;line-height:18px;"><span class="bgText">总毛重<br/>(kg)</span></div>
-<div class="td header" style="width: 60px;line-height:18px;"><span class="bgText">每箱净重<br/>(kg)</span></div>
-<div class="td header last-td" style="width: 59px;line-height:18px;"><span class="bgText">每箱毛重<br/>(kg)</span></div>
+<div class="td header" style="width: 261px;"><span class="bgText">商　　　品　　　名　　　称</span></div>
+<div class="td header" style="width: 79px;"><span class="bgText">数量/单位</span></div>
+<div class="td header" style="width: 79px;"><span class="bgText">箱(件)数</span></div>
+<div class="td header" style="width: 79px;line-height:18px;"><span class="bgText">总净重<br/>(kg)</span></div>
+<div class="td header" style="width: 79px;line-height:18px;"><span class="bgText">总毛重<br/>(kg)</span></div>
+<div class="td header" style="width: 60px;line-height:18px;"><span class="bgText">每箱净重(kg)</span></div>
+<div class="td header last-td" style="width: 59px;line-height:18px;"><span class="bgText">每箱毛重(kg)</span></div>
 </div>
 
 <#if (packingItems?size>23)> 
@@ -81,12 +76,11 @@ PACKING DETAILS</h1>
 <#if (packingItems?size>0)>
 <#list packingItems[0..listlen-1] as packingItem>
 <div class="tr">
-<div class="td editable" style="width: 241px; text-align:left;"><span class="content">${packingItem.name!""}</span></div>
-<div class="td editable" style="width: 59px;"><span class="content">${packingItem.wrapNo!""}</span></div>
-<div class="td editable" style="width: 79px;"><span class="content">${packingItem.packNo!""}</span></div>
+<div class="td editable" style="width: 261px; text-align:left;"><span class="content">${packingItem.name!""}</span></div>
 <div class="td editable" style="width: 79px;"><span class="content">${packingItem.quantity?string("0.###")!""}${packingItem.declareUnit!""}</span></div>
-<div class="td editable" style="width: 59px;"><span class="content">${packingItem.netWeight?string("0.###")!""}</span></div>
-<div class="td editable" style="width: 60px;"><span class="content">${packingItem.grossWeight?string("0.###")!""}</span></div>
+<div class="td editable" style="width: 79px;"><span class="content">${packingItem.packNo!""}</span></div>
+<div class="td editable" style="width: 79px;"><span class="content">${packingItem.netWeight?string("0.###")!""}</span></div>
+<div class="td editable" style="width: 79px;"><span class="content">${packingItem.grossWeight?string("0.###")!""}</span></div>
 <div class="td editable" style="width: 60px;"><span class="content">${packingItem.netWeightPerPack?string("0.###")!""}</span></div>
 <div class="td editable last-td" style="width: 59px;"><span class="content">${packingItem.grossWeightPerPack?string("0.###")!""}</span></div>
 </div>
@@ -94,12 +88,11 @@ PACKING DETAILS</h1>
 </#if>
 <#if (listlen<23)> <#list 1..23-listlen as a>
 <div class="tr">
-<div class="td" style="width: 241px;"></div>
-<div class="td" style="width: 59px;"></div>
+<div class="td" style="width: 261px;"></div>
 <div class="td" style="width: 79px;"></div>
 <div class="td" style="width: 79px;"></div>
-<div class="td" style="width: 59px;"></div>
-<div class="td" style="width: 60px;"></div>
+<div class="td" style="width: 79px;"></div>
+<div class="td" style="width: 79px;"></div>
 <div class="td" style="width: 60px;"></div>
 <div class="td last-td" style="width: 59px;"></div>
 </div>
@@ -108,12 +101,11 @@ PACKING DETAILS</h1>
 
 <#if (packingItems?size>0)>
 <div class="tr">
-<div class="td" style="width: 241px;"></div>
-<div class="td editable" style="width: 59px;"><span class="content">${totleWrapNo!""}</span></div>
-<div class="td editable" style="width: 79px;"><span class="content">${totlePackNo!""}</span></div>
+<div class="td" style="width: 261px;"></div>
 <div class="td" style="width: 79px;"></div>
-<div class="td editable" style="width: 59px;"><span class="content">${totleNetWeight?string("0.###")!""}</span></div>
-<div class="td editable" style="width: 60px;"><span class="content">${totleGrossWeight?string("0.###")!""}</span></div>
+<div class="td editable" style="width: 79px;"><span class="content">${totlePackNo!""}</span></div>
+<div class="td editable" style="width: 79px;"><span class="content">${totleNetWeight?string("0.###")!""}</span></div>
+<div class="td editable" style="width: 79px;"><span class="content">${totleGrossWeight?string("0.###")!""}</span></div>
 <div class="td" style="width: 60px;"></div>
 <div class="td last-td" style="width: 59px;"></div>
 </div>
@@ -121,14 +113,11 @@ PACKING DETAILS</h1>
 
 </div>
 
-<div class="editable" style="margin: 10px 0 0 10px;"><span class="content">唛头:　${shipingMark[0]!""}</span></div>
+<div style="margin: 10px 0 0 10px;"><span class="content">唛头:　${shipingMark[0]!""}</span></div>
 
 </div>
 
-
-</div>
 
 <div style="width: 100%; height: 20px;"></div>
-</div>
 </body>
 </html>
